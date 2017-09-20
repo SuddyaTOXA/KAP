@@ -1,31 +1,41 @@
 /*fonts*/
-$font-main: 'Roboto', Arial, sans-serif;
-$font-heading: 'Patua One', 'Roboto', Arial, sans-serif;
+$font-main: 'Calibri', Arial, sans-serif;
+$font-heading: 'Patua One', $font-main;
+$font-thin: 'SFUIDisplay-Thin', Arial, sans-serif;
+$font-ul: 'SFUIDisplay-UL', Arial, sans-serif;
 
 /*fonts-weight*/
-$normal: 400;
-$medium: 500;
+$light: 300;
+//$normal: 400;
 $bold: 700;
 
 /*fonts-size*/
-$size-main: 18px;
-$size-small: 16px;
-$size-heading1: 44px;
-$size-heading2: 40px;
-$size-heading3: 28px;
+$size-smallest: .9rem;
+$size-small: .95rem;
+$size-main: 20px;
+$size-big: 1.1rem;
+$size-biggest: 1.25rem;
+
+$size-heading: 3.75rem;
+$size-heading-small: 3rem;
+$size-heading-big: 4.6rem;
 
 /*line-height*/
-$line-height: 1.6;
+$line-height: 1.2;
 $line-height-heading: 1;
+
+/*letter-spacing*/
+$letter-spacing: .02em;
 
 /*colors*/
 $white: #ffffff;
-$color-text: #333333;
-$color-text2: #313b43;
-$color-text3: #ff614c;
+$color-text: #000f3e;
+$color-text2: #f6ae4e;
+$color-text3: #f6ae4e;
 $color-bg1: $white;
-$color-bg2: #ff4948;
-$color-bg3: #1d4d94;
+$color-bg2: #000f3e;
+$color-bg3: #F6AE4E;
+
 $color-bg4: #d5d5d5;
 
 /*transition*/

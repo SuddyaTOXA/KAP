@@ -9,6 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/jquery.fullPage.css" rel="stylesheet" type="text/css">
     <link href="assets/css/screen.css" rel="stylesheet" type="text/css">
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,14 +18,150 @@
 
 <body>
     <div class="wrapper">
-        <header id="header"></header>
-        <main id="main"></main>
-        <aside id="sidebar"></aside>
-        <footer id="footer"></footer>
+        <header id="header">
+
+        </header>
+        <div class="nav">
+        <ul class="nav-list">
+            <li data-menuanchor="firstPage" class="active">
+                <a href="#firstPage">Решение под ключ</a>
+            </li>
+            <li data-menuanchor="9thPage">
+                <a href="#9thPage">Алгоритм работы</a>
+            </li>
+            <li data-menuanchor="10thPage">
+                <a href="#10thPage">цена</a>
+            </li>
+            <li data-menuanchor="14thPage">
+                <a href="#14thPage">Контакты</a>
+            </li>
+            <li data-menuanchor="firstPage" class="last-section">
+                <a href="#firstPage">вверх</a>
+            </li>
+        </ul>
+    </div>
+        <div id="fullpage">
+            <div class="section animate-bg" id="section1">
+                <div class="container">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="img/logo_svg.svg" content="Kostenko">
+                        </a>
+                    </div>
+                    <h1>Navigation dots</h1>
+                    <p>An easy and beautiful way to navigate throw the sections</p>
+                </div>
+                <img class="bg-img" src="img/socrat.png" alt="socrat">
+            </div>
+            <div class="section" id="section2">
+                <div class="container">
+                    <div class="box-wrap">
+                        <div class="box-inner">
+                            <div class="box">
+                                <h2 class="box-title">Налоговый спор</h2>
+                                <div class="box-desc">
+                                    <p>Это результат конфликта интересов
+                                        между сторонами налоговых отношений  </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section" id="section3" style="background-color: aqua">
+                <div class="container">
+
+                </div>
+            </div>
+
+            <div class="section" id="section4" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 4</h1>
+                </div>
+            </div>
+
+            <div class="section" id="section5" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 5</h1>
+                </div>
+            </div>
+
+            <div class="section" id="section6" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 6</h1>
+                </div>
+            </div>
+
+            <div class="section" id="section7">
+                <div class="container">
+                    <div class="box-wrap">
+                        <div class="box-inner">
+                            <div class="box">
+                                <span class="box-sub-title">решение налогового спора</span>
+                                <h2 class="box-title">под ключ</h2>
+                                <div class="box-desc">
+                                    <p>Мы предлагаем комплексное ведение дел по разрешению<br/>
+                                        налоговых споров, что включает все необходимые действия для достижения<br/>
+                                        желаемого результата. Это залог Вашего и нашего успеха, позволяющий устранить<br/>
+                                        проблемы с минимальными затратами и последствиями.</p>
+
+                                    <p>Компания "Костенко и партнеры" объединяет ведущих специалистов<br/>
+                                        в области налогового права. Мы предоставляем юридические услуги<br/>
+                                        более 10 лет, и знаем, как найти выход из самых сложных ситуаций,<br/>
+                                        возникающих в процессе ведения бизнеса в Украине</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="section8" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 8</h1>
+                </div>
+            </div>
+
+            <div class="section" id="section9" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 9</h1>
+                </div>
+            </div>
+
+            <div class="section" id="section10" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 10</h1>
+                </div>
+            </div>
+
+            <div class="section" id="section11" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 11</h1>
+                </div>
+            </div>
+
+            <div class="section" id="section12" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 12</h1>
+                </div>
+            </div>
+
+            <div class="section" id="section13" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 13</h1>
+                </div>
+            </div>
+            <div class="section" id="section13" style="background-color: aqua">
+                <div class="container">
+                    <h1>Slide 14</h1>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="assets/js/smooth-scroll.min.js"></script>
+	<!--<script src="assets/js/smooth-scroll.min.js"></script>-->
+    <script src="assets/js/jquery.fullPage.min.js"></script>
 	<script src="assets/js/custom/scripts.js"></script>
 </body>
 </html>
