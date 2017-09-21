@@ -96,11 +96,14 @@ body{
     overflow: hidden;
     position: relative;
     z-index: 5;
-    padding: 40px 0 40px 40px;
+    //padding: 40px 0 40px 40px;
+    padding-left: 40px;
+    background-color: $white;
     @include bg();
     .container {
       position: relative;
       z-index: 10;
+      padding: 20px;
     }
   }
     .bg-img {
@@ -109,12 +112,27 @@ body{
       min-height: 100%;
       min-width: 100%;
       width: auto;
-      height: 100%;
+      height: auto;
       top: 50%;
       left: 50%;
       @include transform();
     }
-  .animate-bg {
+  .bg-overflow:after,
+  .animate-overflow:after {
+    position: absolute;
+    z-index: 7;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .86;
+  }
+  .bg-overflow:after {
+    background-color: rgba(0, 15, 62, .86);
+  }
+  .animate-bg,
+  .animate-overflow:after {
     //background: linear-gradient(-45deg, #000F3F, #0C2052, #2A4A7D, #6FA9DE);
     //background: linear-gradient(45deg, #000F3F, #6FA9DE);
     background: linear-gradient(45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
@@ -271,15 +289,150 @@ body{
                 }
               }
             }
-
-#section2 {
+.section-hero {
+  .bg-img {
+    height: 100%;
+  }
+}
+.section-tax-dispute {
   background-color: $white;
   .box-desc {
     max-width: 460px;
   }
 }
 
-#section7 {
+.section-winner {
+  background-color: #000F3E;
+  .container {
+    overflow: hidden;
+  }
+  .bg-img {
+    opacity: .58;
+  }
+  .left-box,
+  .right-box {
+    float: left;
+    display: table;
+    width: ($col*6);
+    height: calc(100vh - 40px);
+    padding: 1px 0;
+  }
+  .table-cell {
+    display: table-cell;
+    width: 100%;
+    height: 100px;
+    vertical-align: middle;
+  }
+  .right-box {
+    padding: 1px 0 1px 20px;
+  }
+}
+  .winner-box {
+    > * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+    .winner-title-box {
+      margin-bottom: 72px;
+      color: $white;
+      > * {
+        display: block;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+      .winner-title {
+        margin-bottom: 11px;
+        margin-left: -4px;
+        font-size: $size-heading;
+        font-weight: $bold;
+        color: $color-text3;
+        line-height: $line-height-heading;
+        letter-spacing: .025em;
+        text-transform: uppercase;
+      }
+      .winner-sub-title {
+        margin-bottom: 10px;
+        font-size: 1.75rem;
+        letter-spacing: $letter-spacing;
+        word-spacing: .03em;
+        text-transform: uppercase;
+      }
+      .winner-desc {
+        margin-bottom: 10px;
+        max-width: 420px;
+        color: $white;
+        letter-spacing: $letter-spacing;
+        > * {
+          margin-bottom: 14px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        .get-started & {
+          max-width: 510px;
+        }
+      }
+
+    .form-desc {
+      margin-bottom: 21px;
+      margin-left: -1px;
+      font-size: 12px;
+      color: #ffffff;
+      text-transform: uppercase;
+      opacity: .22;
+    }
+    .form-btn-box {
+        margin-top: 45px;
+        margin-left: 3px;
+    }
+    .form-list {
+      .input-list {
+        margin: 0 -18px;
+        > li {
+          position: relative;
+          float: left;
+          width: ($col*6);
+          padding: 0 18px;
+          margin-bottom: 36px;
+          cursor: pointer;
+          &:after {
+            content: "";
+            display: table;
+            clear: both;
+          }
+        }
+      }
+    }
+      .file-list-box {
+        display: none;
+        margin-left: 45px;
+        margin-top: -5px;
+        font-size: 0.8rem;
+        font-weight: $bold;
+        color: $white;
+        vertical-align: top;
+        &.show {
+          display: inline-block;
+        }
+        p {
+          margin-bottom: 4px;
+        }
+      }
+        .file-list {
+          line-height: 1;
+           li {
+             display: block;
+             margin-bottom: 3px;
+             &:last-child {
+               margin-bottom: 0;
+             }
+           }
+        }
+.section-turn-key {
   background-color: $white;
   .box {
     padding-top: 108px;
@@ -292,4 +445,3 @@ body{
       line-height: 1.05;
     }
 }
-

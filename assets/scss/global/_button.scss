@@ -1,0 +1,28 @@
+a.bnt,
+.btn {
+  position: relative;
+  display: inline-block;
+  min-width: 235px;
+  margin: 0;
+  padding: 18px 20px 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: $color-text2;
+  background-color: transparent;
+  border: 5px solid $color-bg3;
+  cursor: pointer;
+  @include css3-prefix('transition', 'all 0.7s ease-out');
+  background: -webkit-linear-gradient(180deg, rgba(246, 174, 78,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+  background: -webkit-linear-gradient(right, rgba(246, 174, 78,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+  background: linear-gradient(270deg, rgba(246, 174, 78,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+  background-position: 1% 50%;
+  background-size: 300% 300%;
+  &:hover,
+  &:focus {
+    color: $white;
+    border-color: rgba(246, 174, 78, 0);
+    background-position: 98% 50%;
+  }
+}

@@ -34,7 +34,7 @@ $color-text2: #f6ae4e;
 $color-text3: #f6ae4e;
 $color-bg1: $white;
 $color-bg2: #000f3e;
-$color-bg3: #F6AE4E;
+$color-bg3: #f6ae4e;
 
 $color-bg4: #d5d5d5;
 
@@ -45,3 +45,6 @@ $transition-other: 0.35s;
 /*border-radius*/
 $radius-main: 10px;
 $radius-small: 5px;
+
+//columns - grid - for custom layouts
+$col: 8.333333333%;

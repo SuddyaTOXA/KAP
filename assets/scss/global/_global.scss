@@ -17,7 +17,7 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: $bold;
   line-height: $line-height-heading;
 }
-select, input, textarea        { font-size:$size-small; vertical-align:middle; color:$color-text2; }
+select, input, textarea        { font-size: 12px; vertical-align:middle; color: $color-text; }
 textarea                       { vertical-align:top; }
 :focus                         { outline:none; }
 input[type=submit], button     { cursor:pointer; }
