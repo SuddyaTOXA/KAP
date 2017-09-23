@@ -1,3 +1,33 @@
+function initMap() {
+        // Create a new StyledMapType object, passing it an array of styles,
+        // and the name to be displayed on the map type control.
+        var styledMapType = new google.maps.StyledMapType(
+            [{"featureType":"all","elementType":"all","stylers":[{"hue":"#008eff"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"0"},{"lightness":"0"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":"-60"},{"lightness":"-20"}]}],
+            {name: 'Styled Map'});
+
+        var image = 'img/geo.png';
+        // Create a map object, and include the MapTypeId to add
+        // to the map type control.
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: mapLat, lng: mapLng},
+            zoom: 14,
+            disableDefaultUI: true,
+            mapTypeControlOptions: {
+                mapTypeIds: ['styled_map']
+            }
+        });
+
+        var beachMarker = new google.maps.Marker({
+            position: {lat: mapLat, lng: mapLng},
+            map: map,
+            icon: image
+        });
+
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map');
+}
+
 jQuery(document).ready(function($) {
     if ($('#fullpage').length) {
         $('#fullpage').fullpage({
@@ -40,15 +70,22 @@ jQuery(document).ready(function($) {
                                 
                             }
                     });
+
                 //for box-wrap animate
                 var box = $('#section' + index + ' .box-wrap');
                     box.each(function (i) {
                         if (!(box.eq(i).hasClass('show'))) {
                             box.eq(i).addClass('show');
-                        } else {
                         }
                     });
 
+                // for line animate
+                var line = $('#section' + index + ' .line');
+                    line.each(function (i) {
+                        if (!(line.eq(i).hasClass('show'))) {
+                            line.eq(i).addClass('show');
+                        }
+                    });
             }
         });
 
@@ -61,7 +98,7 @@ jQuery(document).ready(function($) {
     }
 
     //for input file
-    $('input[name=files]').on('change', function () {
+    $('input.input-file').on('change', function () {
         var names = [],
             count = $(this).get(0).files.length,
             fileParent =  $(this).parents('.custom-form'),
@@ -84,17 +121,40 @@ jQuery(document).ready(function($) {
                     fileBox.removeClass('show');
                 }
             }
-        // for (var i = 0; i < count; ++i) {
-        //     names.push($(this).get(0).files[i].name);
-        // }
-        // for (var i = 0; i < $(this).get(0).files.length; ++i) {
-        //     fileList.add('<li>'+ $(this).get(0).files[i].name +'</li>');
-        // }
-        // console.log(names);
-        // $('input[name=file]').val(names);
-        // names.each(function () {
-        //     console.log($(this));
-        // })
-    })
+    });
 
+    //for review slider
+    $(window).on('load', function () {
+        $('.reviews-nav li').on('click', function () {
+            var slider = $(this).parents('.reviews-slider'),
+                boxList = slider.find('.review-box'),
+                navList = slider.find('.reviews-nav li'),
+                id = $(this).data('reviewNavId'),
+                slide = slider.find('[data-review-id="'+ id +'"]');
+
+
+                if(!($(this).hasClass('current-item'))) {
+                    //for nav
+                    navList.removeClass('current-item');
+                    $(this).addClass('current-item');
+                    //for slide
+                    boxList.fadeOut(200);
+                    boxList.removeClass('show');
+                    setTimeout(function () {
+                        slide.fadeIn(350);
+                    },250 );
+                    setTimeout(function () {
+                        slide.addClass('show');
+                    },600 );
+                }
+        });
+    });
+
+    //for person form
+    $('.icon-letter.person').on('click', function () {
+        if(!($(this).hasClass('show'))) {
+            var personForm = $(this).parents('.person-box').next();
+            personForm.addClass('show');
+        }
+    })
 });
