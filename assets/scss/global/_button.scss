@@ -1,29 +1,72 @@
-a.bnt,
+
+a.btn,
 .btn {
-  position: relative;
-  display: inline-block;
+  overflow: hidden;
   min-width: 235px;
-  margin: 0;
-  padding: 18px 20px 20px;
+  display: inline-block;
   font-size: 15px;
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
+  background: none;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
   color: $color-text2;
   background-color: transparent;
   border: 5px solid $color-bg3;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
   cursor: pointer;
-  @include css3-prefix('transition', 'all 0.7s ease-out');
-  background: -webkit-linear-gradient(180deg, rgba(246, 174, 78,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));
-  background: -webkit-linear-gradient(right, rgba(246, 174, 78,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));
-  background: linear-gradient(270deg, rgba(246, 174, 78,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));
-  background-position: 1% 50%;
-  background-size: 300% 300%;
-  &:hover,
-  &:focus {
+  &:before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 40px);
+    width: -webkit-calc(100% - 40px);
+    height: calc(100% - 38px);
+    height: -webkit-calc(100% - 38px);
     color: $white;
-    border-color: rgba(246, 174, 78, 0);
-    background-position: 98% 50%;
-    text-decoration: none;
+    background: $color-bg3;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    padding: 19px 20px 19px;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+  }
+  &:focus {
+    outline: none;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 18px 20px 20px;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+  }
+  &:hover {
+    &:before {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    span {
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+  &.inverse {
+    color: $white;
+    background-color: $color-bg3;
+    &:before {
+      color: $color-text3;
+      background-color: transparent;
+    }
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
+

@@ -2,5 +2,102 @@
   overflow: hidden;
   width: 100%;
   height: 184px;
-  background-color: yellow;
+  padding-left: 40px;
+  padding-top: 27px;
+  padding-bottom: 35px;
 }
+  .footer-list {
+    overflow: hidden;
+    margin: 0 -10px;
+     > li {
+       position: relative;
+       float: left;
+       width: 22.47%;
+       padding: 1px 10px;
+       min-height: 118px;
+       text-align: center;
+       &.coll-big {
+          width: 32.59%;
+       }
+       &:after {
+         position: absolute;
+         content: '';
+         top: 5px;
+         right: 0;
+         width: 1px;
+         height: 100%;
+         background-color: #B4B1AE;
+       }
+       &:first-child,
+       &:last-child {
+         &:after {
+           content: none;
+         }
+       }
+     }
+  }
+      .footer-box {
+        display: inline-block;
+        max-width: 260px;
+        margin: 0 auto;
+        text-align: left;
+        > * {
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        .coll-big & {
+          max-width: unset;
+        }
+      }
+        .footer-logo {
+          display: block;
+          max-width: 296px;
+          margin: 9px auto 0;
+          img {
+            max-width: 100%;
+          }
+        }
+        .footer-title {
+          margin-bottom: 19px;
+          font-size: 0.9rem;
+          letter-spacing: $letter-spacing;
+          color: #b4b1ae;
+          & + a[href^="tel:"] {
+            margin-top: -5px;
+          }
+        }
+        a.footer-link,
+        .footer-link {
+          display: block;
+          margin-bottom: 3px;
+          font-weight: $bold;
+          letter-spacing: $letter-spacing;
+          line-height: 1;
+          color: $color-text;
+        }
+        a.footer-link {
+          &:hover,
+          &:focus {
+            text-decoration: none;
+            color: $color-text3;
+          }
+        }
+        .copyright {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          //font-size: 15px;
+          font-size: .75em;
+          letter-spacing: $letter-spacing;
+          color: #b4b1ae;
+          a {
+            color: #b4b1ae;
+            text-decoration: underline;
+            &:hover,
+            &:focus {
+              text-decoration: none;
+              color: $color-text3;
+            }
+          }
+        }

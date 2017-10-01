@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Index</title>
+    <title>Костенко</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/jquery.fullPage.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/datepicker.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/screen.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -18,42 +20,110 @@
 
 <body>
     <div class="wrapper">
-        <header id="header">
+        <header class="header">
 
-        </header>
-        <div class="nav">
-        <ul class="nav-list">
-            <li data-menuanchor="firstPage" class="active">
-                <a href="#firstPage">Решение под ключ</a>
-            </li>
-            <li data-menuanchor="9thPage">
-                <a href="#9thPage">Алгоритм работы</a>
-            </li>
-            <li data-menuanchor="10thPage">
-                <a href="#10thPage">цена</a>
-            </li>
-            <li data-menuanchor="14thPage">
-                <a href="#14thPage">Контакты</a>
-            </li>
-            <!--<li data-menuanchor="firstPage" class="last-section">-->
-                <!--<a href="#firstPage">вверх</a>-->
-            <!--</li>-->
-        </ul>
-    </div>
-        <div id="fullpage">
-            <div class="section section-hero animate-bg" id="section1">
-                <div class="container">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="img/logo_svg.svg" content="Kostenko">
-                        </a>
+            <!--<div class="mobile-menu-wrap">-->
+                <div class="mobile-menu-box">
+                    <div class="mobile-menu-inner">
+                        <ul class="mobile-menu">
+                            <li><a href="#">главная</a></li>
+                            <li><a href="#">алгоритм работы</a></li>
+                            <li><a href="#">цена</a></li>
+                            <li><a href="#">контакты</a></li>
+                        </ul>
+                        <ul class="contact-list">
+                            <li>
+                                <div class="contact-box">
+                                    <p class="contact-title">адрес:</p>
+                                    <div class="contact-cell">
+                                        <p class="contact-link">г. Киев</p>
+                                        <p class="contact-link">ул.Павловская, 17, оф.33</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-box">
+                                    <p class="contact-title">телефоны:</p>
+                                    <div class="contact-cell">
+                                        <a href="tel:+38-044-225-92-91" class="contact-link">+38-044-225-92-91</a>
+                                        <a href="tel:+38-067-645-92-91" class="contact-link">+38-067-645-92-91</a>
+                                        <a href="tel:+38-095-638-91-90" class="contact-link">+38-095-638-91-90</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-box">
+                                    <p class="contact-title">e-mail:</p>
+                                    <div class="contact-cell">
+                                        <a href="mailto:tax@kostenko.dn.ua" class="contact-link">tax@kostenko.dn.ua</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <h1>Navigation dots</h1>
-                    <p>An easy and beautiful way to navigate throw the sections</p>
                 </div>
-                <img class="bg-img" src="img/socrat.png" alt="socrat">
+                <!--<div class="mobile-menu-overlay"></div>-->
+            <!--</div>-->
+
+            <div class="header-box">
+                <div class="mob-logo">
+                    <a href="index.html">
+                        <img src="img/mob_logo.png" alt="Kostenko">
+                    </a>
+                </div>
+
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                </div>
             </div>
-            <div class="section section-tax-dispute" id="section2">
+        </header>
+
+        <div class="nav">
+            <ul class="nav-list">
+                <li data-menuanchor="firstPage" class="active">
+                    <a href="#firstPage">Главная</a>
+                </li>
+                <li data-menuanchor="9thPage">
+                    <a href="#9thPage">Алгоритм работы</a>
+                </li>
+                <li data-menuanchor="10thPage">
+                    <a href="#10thPage">цена</a>
+                </li>
+                <li data-menuanchor="14thPage">
+                    <a href="#14thPage">Контакты</a>
+                </li>
+                <li data-menuanchor="fullpage" class="last-section">
+                    <a href="#fullpage">вверх</a>
+                </li>
+            </ul>
+        </div>
+        <div id="fullpage">
+            <div class="section fp-auto-height-responsive section-hero animate-bg" id="section1">
+                <div class="container">
+                    <div class="hero-box">
+                        <div class="logo">
+                            <!--<a href="index.html">-->
+                                <img src="img/logo_svg.svg" content="Kostenko">
+                            <!--</a>-->
+                        </div>
+
+                        <h1 class="hero-title"><span>Профессиональная помощь в решении</span>
+                            налоговых споров
+                        </h1>
+                        <!--<button class="button" data-text="Send Message"><span>Send Message</span></button>-->
+                        <a class="btn open-popup" href="#call-back" data-text="начать работу"><span>начать работу</span></a>
+
+                        <div class="hero-btn-box">
+                            <a href="tel:+38-044-225-92-91">+38-044-225-92-91</a>
+                            <a href="tel:+38-067-645-92-91">+38-067-645-92-91</a>
+                            <a href="tel:+38-095-638-91-90">+38-095-638-91-90</a>
+                        </div>
+                    </div>
+                </div>
+                <img class="bg-img" src="img/background.jpg" alt="socrat">
+            </div>
+
+            <div class="section fp-auto-height-responsive section-tax-dispute" id="section2">
                 <div class="container">
                     <div class="box-wrap">
                         <div class="box-inner">
@@ -68,13 +138,52 @@
                     </div>
                 </div>
             </div>
-            <div class="section" id="section3" style="background-color: aqua">
-                <div class="container">
 
+            <div class="section fp-auto-height-responsive section-sides" id="section3">
+                <div class="container">
+                    <div class="left-box">
+                        <div class="side-arrow">
+                            <img src="img/arrow_bg.png" alt="arrow-right">
+                        </div>
+                        <div class="side-box">
+                            <span class="line"></span>
+                            <h3 class="side-title">Компания</h3>
+                            <span class="problem">Задача:</span>
+                            <div class="side-desc">
+                                <p>Нести соразмерную налоговую нагрузку,
+                                    максимально защитить свои права,
+                                    не рискуя собственным  бизнесом
+                                    и материальным состоянием </p>
+                            </div>
+                        </div>
+                        <div class="side-img">
+                            <img src="img/man.png" alt="man">
+                        </div>
+                    </div>
+                    <div class="right-box">
+                        <div class="side-arrow">
+                            <img src="img/arrow_bg.png" alt="arrow-left">
+                        </div>
+                        <div class="side-box">
+                            <span class="line"></span>
+                            <h3 class="side-title">фискальная служба</h3>
+                            <span class="problem">Задача:</span>
+                            <div class="side-desc">
+                                <p>Выполнить "план" по наполнению
+                                    государственного бюджета, используя
+                                    для этого "любые способы и средства",
+                                    максимально взыскать
+                                    денежные средства с налогоплательщиков</p>
+                            </div>
+                        </div>
+                        <div class="side-img">
+                            <img src="img/leo.png" alt="leo">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="section section-winner bg-overflow" id="section4">
+            <div class="section fp-auto-height-responsive section-winner bg-overflow" id="section4">
                 <div class="container">
                     <div class="left-box">
                         <div class="table-cell">
@@ -100,17 +209,25 @@
                                     <li>
                                         <ul class="input-list">
                                             <li>
-                                                <input type="text" class="input-style" placeholder="имя &#8226;" required>
+                                                <div class="input-wrapper">
+                                                    <input type="text" class="input-style required-dot" required>
+                                                    <span class="placeholder" data-placeholder="имя"></span>
+                                                    <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                </div>
                                             </li>
                                             <li>
-                                                <input type="text" class="input-style" placeholder="телефон &#8226;" required>
+                                                <div class="input-wrapper">
+                                                    <input type="tel" class="input-style required-dot" required>
+                                                    <span class="placeholder" data-placeholder="телефон"></span>
+                                                    <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                </div>
                                             </li>
                                         </ul>
                                     </li>
                                     <li>
                                         <ul class="input-list">
                                             <li>
-                                                <input type="text" class="input-style" placeholder="e-mail" required>
+                                                <input type="email" class="input-style " placeholder="e-mail">
                                             </li>
                                             <li>
                                                 <div class="file-wrap">
@@ -123,20 +240,19 @@
                                     <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
                                 </ul>
                                 <div class="form-btn-box">
-                                    <button class="btn">Отправить</button>
-                                    <!--<input name="file" type="text" />-->
+                                    <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
                                     <div class="file-list-box" >
                                         <p>Прикреплено <span class="file-count">3</span> файла:</p>
                                         <ul class="file-list">
                                         </ul>
+                                        <div class="error-box" style="display: none;">
+                                            <p>Заполните все обязательные поля</p>
+                                        </div>
+                                        <div class="successful-box" style="display: none;">
+                                            <p>Cпасибо!</p>
+                                            <p>Мы обязательно с Вами свяжемся.</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="error-box" style="display: none;">
-                                    <p>Заполните все обязательные поля</p>
-                                </div>
-                                <div class="successful-box" style="display: none;">
-                                    <p>Cпасибо!</p>
-                                    <p>Мы обязательно с Вами свяжемся.</p>
                                 </div>
                             </form>
                             </div>
@@ -146,7 +262,7 @@
                 <img class="bg-img" src="img/winner_bg.jpg" alt="winner">
             </div>
 
-            <div class="section section-necessary" id="section5">
+            <div class="section fp-auto-height-responsive section-necessary" id="section5">
                 <div class="with-whom-table">
                     <div class="with-whom-cell" style="background-image: url(img/necessary_bg.jpg);">
                         <div class="box-wrap">
@@ -218,7 +334,7 @@
                 </div>
             </div>
 
-            <div class="section section-necessary trusting" id="section6">
+            <div class="section fp-auto-height-responsive section-necessary trusting" id="section6">
                 <div class="with-whom-table">
                     <div class="with-whom-cell big">
                         <ul class="trusting-list">
@@ -304,7 +420,7 @@
                 </div>
             </div>
 
-            <div class="section section-turn-key" id="section7">
+            <div class="section fp-auto-height-responsive section-turn-key" id="section7">
                 <div class="container">
                     <div class="box-wrap">
                         <div class="box-inner">
@@ -328,7 +444,7 @@
                 </div>
             </div>
 
-            <div class="section section-winner get-started bg-overflow" id="section8">
+            <div class="section fp-auto-height-responsive section-winner get-started bg-overflow" id="section8">
                 <div class="container">
                     <div class="left-box">
                         <div class="table-cell">
@@ -354,17 +470,25 @@
                                         <li>
                                             <ul class="input-list">
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="имя &#8226;" required>
+                                                    <div class="input-wrapper">
+                                                        <input type="text" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="имя"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
                                                 </li>
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="телефон &#8226;" required>
+                                                    <div class="input-wrapper">
+                                                        <input type="tel" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="телефон"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
                                             <ul class="input-list">
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="e-mail" required>
+                                                    <input type="email" class="input-style" placeholder="e-mail">
                                                 </li>
                                                 <li>
                                                     <div class="file-wrap">
@@ -377,19 +501,19 @@
                                         <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
                                     </ul>
                                     <div class="form-btn-box">
-                                        <button class="btn">Отправить</button>
+                                        <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
                                         <div class="file-list-box" >
                                             <p>Прикреплено <span class="file-count">3</span> файла:</p>
                                             <ul class="file-list">
                                             </ul>
+                                            <div class="error-box" style="display: none;">
+                                                <p>Заполните все обязательные поля</p>
+                                            </div>
+                                            <div class="successful-box" style="display: none;">
+                                                <p>Cпасибо!</p>
+                                                <p>Мы обязательно с Вами свяжемся.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="error-box" style="display: none;">
-                                        <p>Заполните все обязательные поля</p>
-                                    </div>
-                                    <div class="successful-box" style="display: none;">
-                                        <p>Cпасибо!</p>
-                                        <p>Мы обязательно с Вами свяжемся.</p>
                                     </div>
                                 </form>
                             </div>
@@ -399,19 +523,314 @@
                 <img class="bg-img" src="img/get_bg.jpg" alt="get started">
             </div>
 
-            <div class="section" id="section9" style="background-color: aqua">
+            <div class="section fp-auto-height-responsive section-how-work" id="section9">
                 <div class="container">
-                    <h1>Slide 9</h1>
+                    <h2 class="section-title">как мы работаем </h2>
+                    <ul class="how-work-list">
+                        <li>
+                            <div class="how-work-box">
+                                <span class="how-work-number">1</span>
+                                <span class="line"></span>
+                                <div class="how-work-desc">
+                                    <p>Фискальным органом<br/>
+                                        принято решение, с которым<br/>
+                                        Вы не согласны</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="how-work-box">
+                                <span class="how-work-number">2</span>
+                                <span class="line"></span>
+                                <div class="how-work-desc">
+                                    <p>Вы направляете<br/>
+                                        это решение нам</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="how-work-box">
+                                <span class="how-work-number">3</span>
+                                <span class="line"></span>
+                                <div class="how-work-desc">
+                                    <p>Вы собираете документы
+                                        по операциям, связанным прямо
+                                        или косвенно с указанным решением,
+                                        и тоже направляете их нам</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="how-work-box">
+                                <span class="how-work-number">4</span>
+                                <span class="line"></span>
+                                <div class="how-work-desc">
+                                    <p>Мы анализируем<br/>
+                                        решение и документы</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="how-work-box">
+                                <span class="how-work-number">5</span>
+                                <span class="line"></span>
+                                <div class="how-work-desc">
+                                    <p>Мы разрабатываем<br/>
+                                        оптимальный алгоритм<br/>
+                                        работы по проекту</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="how-work-box">
+                                <span class="how-work-number">6</span>
+                                <span class="line"></span>
+                                <div class="how-work-desc">
+                                    <p>Мы организуем встречу с Вами
+                                        и совместно проработаем возможные
+                                        варианты дальнейших действий</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="how-work-box">
+                                <span class="how-work-number">7</span>
+                                <span class="line"></span>
+                                <div class="how-work-desc">
+                                    <p>Вы заключаете<br/>
+                                        договор с нами</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="how-work-box">
+                                <span class="how-work-number">8</span>
+                                <span class="line"></span>
+                                <div class="how-work-desc">
+                                    <p>Мы реализовываем
+                                        согласованный алгоритм работы
+                                        до получения конечного результата</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="how-work-info">
+                        <p>Не зависимо от того будем ли мы вместе работать или нет, и не важно, на какой стадии
+                            Вы к нам пришли и какую именно работу мы будем для Вас делать, КОНФИДЕНЦИАЛЬНОСТЬ — это
+                            базовый принцип нашей работы</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="section" id="section10" style="background-color: aqua">
-                <div class="container">
-                    <h1>Slide 10</h1>
+            <div class="section fp-auto-height-responsive section-price" id="section10">
+                <div class="with-whom-table">
+                    <div class="with-whom-cell big first">
+                        <div class="price-box">
+                            <h3 class="section-title">Формирование цены</h3>
+                            <div class="section-desc">
+                                <p>Все, что можно уладить с помощью денег, обходится дешево. Эрих Мария Ремарк </p>
+                            </div>
+                        </div>
+                        <div class="price-form-wrap">
+                            <form class="price-form">
+                                <ul class="price-form-list">
+                                    <li>
+                                        <ul class="coll-3">
+                                            <li>
+                                                <label class="label-title" for="p-tax-dispute">сумма налогового спора</label>
+                                                <span class="select-wrap">
+                                                    <select id="p-tax-dispute" name="p-tax-dispute">
+                                                        <option selected value="">до 500 000 ₴</option>
+                                                        <option value="">до 250 000 ₴</option>
+                                                        <option value="">до 100 000 ₴</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <label class="label-title" for="p-base-cost">базовая стоимость
+                                                    <span class="tooltip-icon"
+                                                          rel="tooltip"
+                                                          title="Стоимость услуг напрямую зависит от размера Вашей
+                                                           налоговой проблемы и состоит из базовой стоимости и
+                                                            «гонорара успеха».">
+                                                    </span>
+                                                </label>
+                                                <input type="text" name=p-base-cost" id="p-base-cost" class="input-style" placeholder="20 000 ₴">
+                                            </li>
+                                            <li>
+                                                <label class="label-title" for="p-success-fee">гонорар успеха
+                                                    <span class="tooltip-icon"
+                                                          rel="tooltip"
+                                                          title="Мы прямо заинтересованы в достижении максимального
+                                                                результата, поскольку сумма «гонорара успеха»
+                                                                определяется положительным для Вас результатом.">
+                                                    </span>
+                                                </label>
+                                                <input type="text" name="p-success-fee" id="p-success-fee" class="input-style" placeholder="5 %">
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul class="coll-2">
+                                            <li>
+                                                <input type="checkbox" class="checkbox" id="p-quickly" name="p-quickly">
+                                                <label for="p-quickly">
+                                                    <span class="radio-title">Срочно
+                                                        <span class="tooltip-icon"
+                                                              rel="tooltip"
+                                                              title="<span>ДОПЛАТА ЗА СРОЧНОСТЬ</span> обусловлена достаточно сжатыми сроками для
+                                                                    обжалования решений налоговых органов. Пропуск указанных сроков значительно
+                                                                    усложнят процедуру обжалования. Мы сделаем все возможное, что бы эти сроки
+                                                                    не были пропущены, но мы вынуждены будем выполнить указанную работу
+                                                                    в срочном авральном порядке, с привлечением дополнительных специалистов,
+                                                                     в ненормированном графике и с отложением решений текущих вопросов.">
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <span class="select-wrap">
+                                                    <select id="p-">
+                                                        <option selected value="">старт проекта более чем за 3 дня</option>
+                                                        <option value="">старт проекта более чем за 5 дня</option>
+                                                        <option value="">старт проекта более чем за 10 дня</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul class="coll-2">
+                                            <li>
+                                                <label for="p-city">В каком регионе находится Ваша компания?
+                                                    <span class="tooltip-icon"
+                                                          rel="tooltip"
+                                                          title="<span>ДОПЛАТА ПО РЕГИОНАМ.</span> Осуществление доплат по регионам
+                                                                обусловлена дополнительными расходами Компании,
+                                                                связанными с затратами на ведения проекта. К ним относятся
+                                                                затраты на постоянные командировки сотрудников
+                                                                в указанные области, транспорт, проживание и т.д.">
+                                                    </span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <span class="select-wrap" name="p-city">
+                                                    <select id="p-city">
+                                                        <option selected value="">Город</option>
+                                                        <option value="">Закарпатская область (г. Ужгород)</option>
+                                                        <option value="">Закарпатская область (г. Ужгород)</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul class="coll-2">
+                                            <li>
+                                                <label for="p-scope">Объем налоговых операций
+                                                    <span class="tooltip-icon"
+                                                          rel="tooltip"
+                                                          title="<span>ДОПЛАТА ЗА ОБЪЕМ.</span> Трудоемкость проекта
+                                                          напрямую зависитот количества хозяйственных операция и
+                                                          первичных документов, подлежащих обработке, анализу и описанию.">
+
+                                                    </span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <span class="select-wrap">
+                                                    <select id="p-scope" name="p-scope">
+                                                        <option selected value="">неизвестно</option>
+                                                        <option value="">до 250 000 ₴</option>
+                                                        <option value="">до 100 000 ₴</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="price-result-row">
+                                        <ul class="coll-2">
+                                            <li><span class="label-title">результат:</span></li>
+                                            <li>
+                                                <div class="price-result-box">
+                                                    <span class="price">45 000 ₴ </span>
+                                                    <span class="price-desc">+ 5 % от <br/> суммы положительного решения</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </form>
+                            <div class="price-form-desc">
+                                <p>Это максимально возможная сумма, которую Вы можете получить за оказанные услуги.
+                                    Мы всегда готовы идти Вам навстречу и открыты к обсуждению стоимости услуг. Окончательное решение
+                                    по цене принимается с учетом результата переговоров и выбранного формата сотрудничества с Вами</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="with-whom-cell" style="background-image: url(img/p_chumakov.jpg);">
+                        <div class="person-form show">
+                            <div class="person-form-box">
+                                <h4 class="person-form-title">Заполните данные для начала нашей работы</h4>
+                                <form class="custom-form">
+                                    <ul class="form-list">
+                                        <li>
+                                            <ul class="input-list">
+                                                <li>
+                                                    <div class="input-wrapper">
+                                                        <input type="text" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="имя"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="input-wrapper">
+                                                        <input type="tel" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="телефон"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="input-list">
+                                                <li>
+                                                    <input type="email" class="input-style" placeholder="e-mail">
+                                                </li>
+                                                <li>
+                                                    <div class="file-wrap">
+                                                        <input id="g-file" type="file" class="input-file" name="files" multiple>
+                                                        <label for="g-file" class="input-file-trigger">прикрепить файл</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
+                                    </ul>
+                                    <div class="form-btn-box">
+                                        <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
+                                        <div class="file-list-box" >
+                                            <p>Прикреплено <span class="file-count">3</span> файла:</p>
+                                            <ul class="file-list">
+                                            </ul>
+                                            <div class="error-box" style="display: none;">
+                                                <p>Заполните все обязательные поля</p>
+                                            </div>
+                                            <div class="successful-box" style="display: none;">
+                                                <p>Cпасибо!</p>
+                                                <p>Мы обязательно с Вами свяжемся.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="section with-whom" id="section11">
+            <div class="section fp-auto-height-responsive with-whom" id="section11">
                 <div class="with-whom-table">
                     <div class="with-whom-cell first" style="background-image: url(img/p_kostenko.jpg);">
                         <!--<img class="bg-img" src="img/p_kostenko.jpg" alt="">-->
@@ -430,17 +849,25 @@
                                         <li>
                                             <ul class="input-list">
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="имя &#8226;" required>
+                                                    <div class="input-wrapper">
+                                                        <input type="text" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="имя"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
                                                 </li>
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="телефон &#8226;" required>
+                                                    <div class="input-wrapper">
+                                                        <input type="tel" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="телефон"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
                                             <ul class="input-list">
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="e-mail" required>
+                                                    <input type="email" class="input-style" placeholder="e-mail" >
                                                 </li>
                                                 <li>
                                                     <div class="file-wrap">
@@ -453,19 +880,19 @@
                                         <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
                                     </ul>
                                     <div class="form-btn-box">
-                                        <button class="btn">Приступаем</button>
+                                        <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
                                         <div class="file-list-box" >
                                             <p>Прикреплено <span class="file-count">3</span> файла:</p>
                                             <ul class="file-list">
                                             </ul>
+                                            <div class="error-box" style="display: none;">
+                                                <p>Заполните все обязательные поля</p>
+                                            </div>
+                                            <div class="successful-box" style="display: none;">
+                                                <p>Cпасибо!</p>
+                                                <p>Мы обязательно с Вами свяжемся.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="error-box" style="display: none;">
-                                        <p>Заполните все обязательные поля</p>
-                                    </div>
-                                    <div class="successful-box" style="display: none;">
-                                        <p>Cпасибо!</p>
-                                        <p>Мы обязательно с Вами свяжемся.</p>
                                     </div>
                                 </form>
                             </div>
@@ -503,10 +930,18 @@
                                         <li>
                                             <ul class="input-list">
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="имя &#8226;" required>
+                                                    <div class="input-wrapper">
+                                                        <input type="text" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="имя"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
                                                 </li>
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="телефон &#8226;" required>
+                                                    <div class="input-wrapper">
+                                                        <input type="tel" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="телефон"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </li>
@@ -517,8 +952,8 @@
                                                 </li>
                                                 <li>
                                                     <div class="file-wrap">
-                                                        <input id="g-file" type="file" class="input-file" name="files" multiple>
-                                                        <label for="g-file" class="input-file-trigger">прикрепить файл</label>
+                                                        <input id="r-file" type="file" class="input-file" name="files" multiple>
+                                                        <label for="r-file" class="input-file-trigger">прикрепить файл</label>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -526,19 +961,19 @@
                                         <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
                                     </ul>
                                     <div class="form-btn-box">
-                                        <button class="btn">Приступаем</button>
+                                        <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
                                         <div class="file-list-box" >
                                             <p>Прикреплено <span class="file-count">3</span> файла:</p>
                                             <ul class="file-list">
                                             </ul>
+                                            <div class="error-box" style="display: none;">
+                                                <p>Заполните все обязательные поля</p>
+                                            </div>
+                                            <div class="successful-box" style="display: none;">
+                                                <p>Cпасибо!</p>
+                                                <p>Мы обязательно с Вами свяжемся.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="error-box" style="display: none;">
-                                        <p>Заполните все обязательные поля</p>
-                                    </div>
-                                    <div class="successful-box" style="display: none;">
-                                        <p>Cпасибо!</p>
-                                        <p>Мы обязательно с Вами свяжемся.</p>
                                     </div>
                                 </form>
                             </div>
@@ -547,7 +982,7 @@
                 </div>
             </div>
 
-            <div class="section section-winner our-practice trust-us inverse" id="section12">
+            <div class="section fp-auto-height-responsive section-winner our-practice trust-us inverse" id="section12">
                 <div class="container">
                     <div class="left-box">
                         <div class="table-cell">
@@ -587,7 +1022,7 @@
                                                     организованность ее сотрудников, готовность и способность
                                                     быстро реагировать на обстоятельства.</p>
                                             </div>
-                                            <a href="pdf/ekstra.pdf" target="_blank" class="btn btn-review">оригинал отзыва</a>
+                                            <a href="pdf/ekstra.pdf" target="_blank" class="btn btn-review" data-text="оригинал отзыва"><span>оригинал отзыва</span></a>
                                         </div>
                                         <div class="review-box" data-review-id="2">
                                             <div class="review-header-box">
@@ -605,7 +1040,7 @@
                                                     прагматизм, так и креативные приемы в выполнении поставленных
                                                     задач.</p>
                                             </div>
-                                            <a href="pdf/stol.pdf" target="_blank" class="btn btn-review">оригинал отзыва</a>
+                                            <a href="pdf/stol.pdf" target="_blank" class="btn btn-review" data-text="оригинал отзыва"><span>оригинал отзыва</span></a>
                                         </div>
                                         <div class="review-box" data-review-id="3">
                                             <div class="review-header-box">
@@ -622,7 +1057,7 @@
                                                     работу специалистов и оперативность выполнения заданий,
                                                     внимательное отношение к клиенту. </p>
                                             </div>
-                                            <a href="pdf/7Line.pdf" target="_blank" class="btn btn-review">оригинал отзыва</a>
+                                            <a href="pdf/7Line.pdf" target="_blank" class="btn btn-review" data-text="оригинал отзыва"><span>оригинал отзыва</span></a>
                                         </div>
                                         <div class="review-box" data-review-id="4">
                                             <div class="review-header-box">
@@ -641,7 +1076,7 @@
                                                     Рекомендуем Юридическую компанию «Костенко и партнеры» как
                                                     надежного партнера и эффективную профессиональную команду.</p>
                                             </div>
-                                            <a href="pdf/Donbass_Palace.pdf" target="_blank" class="btn btn-review">оригинал отзыва</a>
+                                            <a href="pdf/Donbass_Palace.pdf" target="_blank" class="btn btn-review" data-text="оригинал отзыва"><span>оригинал отзыва</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -671,7 +1106,7 @@
                 <img class="bg-img" src="img/trust_us_bg.jpg" alt="trust us">
             </div>
 
-            <div class="section section-winner our-practice bg-overflow" id="section13" >
+            <div class="section fp-auto-height-responsive section-winner our-practice bg-overflow" id="section13" >
                 <div class="container">
                     <div class="left-box">
                         <div class="table-cell">
@@ -706,7 +1141,7 @@
                                                     земельный участок за один и тот же период не могут быть уплачены и
                                                     земельный налог и арендная плата за землю.</p>
                                             </div>
-                                            <a href="pdf/Postanovlenie_1.PDF" target="_blank" class="btn btn-review">судебное решение</a>
+                                            <a href="pdf/Postanovlenie_1.PDF" target="_blank" class="btn btn-review" data-text="судебное решение"><span>судебное решение</span></a>
                                         </div>
                                         <div class="review-box" data-review-id="2">
                                             <div class="review-text">
@@ -725,7 +1160,7 @@
                                                     заявления плательщика. Налоговая не может ограничивать плательщика в
                                                     праве свободного распоряжения переплатой по налогам.</p>
                                             </div>
-                                            <a href="pdf/Postanovlenie_2.PDF" target="_blank" class="btn btn-review">судебное решение</a>
+                                            <a href="pdf/Postanovlenie_2.PDF" target="_blank" class="btn btn-review" data-text="судебное решение"><span>судебное решение</span></a>
                                         </div>
                                         <div class="review-box" data-review-id="3">
                                             <div class="review-text">
@@ -742,7 +1177,7 @@
                                                     фиктивными операций с ним. Принцип «круговой поруки» не применим в
                                                     налоговых правоотношениях.</p>
                                             </div>
-                                            <a href="pdf/Postanovlenie_3.PDF" target="_blank" class="btn btn-review">судебное решение</a>
+                                            <a href="pdf/Postanovlenie_3.PDF" target="_blank" class="btn btn-review" data-text="судебное решение"><span>судебное решение</span></a>
                                         </div>
                                         <div class="review-box" data-review-id="4">
                                             <div class="review-text">
@@ -757,7 +1192,7 @@
                                                     подтверждения расходов плательщика первичными документами их снятие в
                                                     налоговом учете на основании не корректного отражения является незаконным.</p>
                                             </div>
-                                            <a href="pdf/Postanovlenie_4.PDF" target="_blank" class="btn btn-review">судебное решение</a>
+                                            <a href="pdf/Postanovlenie_4.PDF" target="_blank" class="btn btn-review" data-text="судебное решение"><span>судебное решение</span></a>
                                         </div>
                                         <div class="review-box show" data-review-id="5">
                                             <div class="review-text">
@@ -770,7 +1205,7 @@
                                                     аннулировании регистрации плательщика НДС – отмена в судебном
                                                     порядке соответствующего решения фискальной службы.</p>
                                             </div>
-                                            <a href="pdf/Postanovlenie_5.PDF" target="_blank" class="btn btn-review">судебное решение</a>
+                                            <a href="pdf/Postanovlenie_5.PDF" target="_blank" class="btn btn-review" data-text="судебное решение"><span>судебное решение</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -804,7 +1239,7 @@
                 <img class="bg-img" src="img/our_practice_bg.jpg" alt="get our-practice">
             </div>
 
-            <div class="section section-map" id="section14">
+            <div class="section fp-auto-height-responsive section-map" id="section14">
                 <!--<div class="container">-->
                     <div class="left-box" style="background-image: url(img/p_mnogolit.jpg)">
                         <!--<img class="bg-img" src="img/p_mnogolit.jpg" alt="">-->
@@ -828,17 +1263,25 @@
                                         <li>
                                             <ul class="input-list">
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="имя &#8226;" required>
+                                                    <div class="input-wrapper">
+                                                        <input type="text" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="имя"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
                                                 </li>
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="телефон &#8226;" required>
+                                                    <div class="input-wrapper">
+                                                        <input type="tel" class="input-style required-dot" required>
+                                                        <span class="placeholder" data-placeholder="телефон"></span>
+                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
                                             <ul class="input-list">
                                                 <li>
-                                                    <input type="text" class="input-style" placeholder="e-mail" required>
+                                                    <input type="email" class="input-style" placeholder="e-mail">
                                                 </li>
                                                 <li>
                                                     <div class="file-wrap">
@@ -851,19 +1294,19 @@
                                         <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
                                     </ul>
                                     <div class="form-btn-box">
-                                        <button class="btn">Приступаем</button>
+                                        <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
                                         <div class="file-list-box" >
                                             <p>Прикреплено <span class="file-count">3</span> файла:</p>
                                             <ul class="file-list">
                                             </ul>
+                                            <div class="error-box" style="display: none;">
+                                                <p>Заполните все обязательные поля</p>
+                                            </div>
+                                            <div class="successful-box" style="display: none;">
+                                                <p>Cпасибо!</p>
+                                                <p>Мы обязательно с Вами свяжемся.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="error-box" style="display: none;">
-                                        <p>Заполните все обязательные поля</p>
-                                    </div>
-                                    <div class="successful-box" style="display: none;">
-                                        <p>Cпасибо!</p>
-                                        <p>Мы обязательно с Вами свяжемся.</p>
                                     </div>
                                 </form>
                             </div>
@@ -878,18 +1321,148 @@
                         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu0jixMc1Qw-Vmf26uuvV7wBlI6t0vV0o&callback=initMap" async defer></script>
                     </div>
                     <footer id="footer">
-                        <div class="container">
-
-                        </div>
+                        <!--<div class="container">-->
+                            <!---->
+                        <!--</div>-->
+                        <ul class="footer-list">
+                            <li class="coll-big">
+                                <div class="footer-box">
+                                    <div class="footer-logo">
+                                        <a href="index.html">
+                                            <img src="img/footer_logo@2x.png" content="Kostenko">
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="footer-box">
+                                    <p class="footer-title">адрес:</p>
+                                    <div class="footer-cell">
+                                        <p class="footer-link">г. Киев</p>
+                                        <p class="footer-link">ул.Павловская, 17, оф.33</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="footer-box">
+                                    <p class="footer-title">телефоны:</p>
+                                    <div class="footer-cell">
+                                        <a href="tel:+38-044-225-92-91" class="footer-link">+38-044-225-92-91</a>
+                                        <a href="tel:+38-067-645-92-91" class="footer-link">+38-067-645-92-91</a>
+                                        <a href="tel:+38-095-638-91-90" class="footer-link">+38-095-638-91-90</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="footer-box">
+                                    <p class="footer-title">e-mail:</p>
+                                    <div class="footer-cell">
+                                        <a href="mailto:tax@kostenko.dn.ua" class="footer-link">tax@kostenko.dn.ua</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="copyright">© 2017 | сайт разработан в <a href="https://rubarbs.com" target="_blank">RUBARB DIGITAL</a></p>
                     </footer>
                 <!--</div>-->
             </div>
         </div>
+
+        <a class="coll-back-btn open-popup" href="#call-back">
+            <span class="coll-back-btn-text">
+                Мы можем перезвонить
+                в удобное для Вас время
+            </span>
+        </a>
+
+
+        <form id="call-back" class="white-popup mfp-hide">
+            <div class="call-back-form">
+                <div class="left-box">
+                    <span class="call-back-desc">К сожалению, сейчас у нас нерабочее время.</span>
+                    <h2 class="call-back-title">Выберите удобное для Вас время звонка</h2>
+                </div>
+                <div class="right-box">
+                    <div class="call-back-box">
+                         <ul class="call-back-list">
+                             <li>
+                                 <ul class="call-back-date">
+                                     <li>
+                                         <span class="select-wrap">
+                                            <select id="cb-hour" name="cb-hour">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option selected value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                            </select>
+                                        </span>
+                                         <span class="select-wrap right">
+                                            <select id="cb-minute" name="cb-minute">
+                                                <option value="00">00</option>
+                                                <option value="05">05</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option selected value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                            </select>
+                                        </span>
+                                     </li>
+                                     <li>
+                                         <div class="my-datepicker">
+                                            <input type='text' class="datepicker-here input-style" placeholder="СЕГОДНЯ">
+                                         </div>
+                                     </li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 <ul>
+                                     <li>
+                                         <input type="tel" class="input-style" placeholder="Ваш номер телефона" required>
+                                         <span class="call-back-desc">Например: 067 000 00 00</span>
+                                         <button class="btn inverse" data-text="жду звонка"><span>жду звонка</span></button>
+                                     </li>
+                                     <li></li>
+                                 </ul>
+
+                             </li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!--<script src="assets/js/smooth-scroll.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js"></script>
     <script src="assets/js/jquery.fullPage.min.js"></script>
+    <script src="assets/js/magnifi.js"></script>
+    <script src="assets/js/datepicker.min.js"></script>
 	<script src="assets/js/custom/scripts.js"></script>
 </body>
 </html>
