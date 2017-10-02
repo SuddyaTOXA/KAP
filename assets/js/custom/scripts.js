@@ -5,7 +5,7 @@ function initMap() {
             [{"featureType":"all","elementType":"all","stylers":[{"hue":"#008eff"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"0"},{"lightness":"0"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":"-60"},{"lightness":"-20"}]}],
             {name: 'Styled Map'});
 
-        var image = 'img/geo.png';
+        var image = 'site/img/geo.png';
         // Create a map object, and include the MapTypeId to add
         // to the map type control.
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -54,35 +54,78 @@ jQuery(document).ready(function($) {
         $(document.body).toggleClass('overflow');
     });
 
+    // for smooth scroll
+    // if ( $('[data-menuanchor]').length ) {
+    //     console.log("scroll")
+    //     smoothScroll.init({
+    //         selector: '.smooth-scroll, [data-menuanchor]', // Selector for links (must be a class, ID, data attribute, or element tag)
+    //         speed: 2500, // Integer. How fast to complete the scroll in milliseconds
+    //         easing: 'easeInQuad', // Easing pattern to use
+    //         // offset: 130 // Integer. How far to offset the scrolling anchor location in pixels
+    //     });
+    // }
+
+    var myList = [
+        'main',
+        'tax-disputes',
+        'conflict',
+        'winner',
+        'necessary',
+        'trusting-us',
+        'full-construction',
+        'get-started',
+        'how-working',
+        'price-formation',
+        'will-work',
+        'trust-us',
+        'our-practice',
+        'contact'
+    ];
+
     if ($('#fullpage').length) {
         var box = $('.section'),
-            maxH = maxHeight(box),
             respHeight = 0;
 
         function fullpageCustomInitialize(respHeight) {
             $('#fullpage').fullpage({
-                anchors: [
-                    'firstPage',
-                    'secondPage',
-                    '3rdPage',
-                    '4thPage',
-                    '5thPage',
-                    '6thPage',
-                    '7thPage',
-                    '8thPage',
-                    '9thPage',
-                    '10thPage',
-                    '11thPage',
-                    '12thPage',
-                    '13thPage',
-                    '14thPage'
-                ],
+                anchors: myList,
+                css3: false,
                 keyboardScrolling: false,
                 verticalCentered: true,
                 scrollingSpeed: 700,
                 scrollBar: true,
                 responsiveHeight: respHeight,
                 responsiveWidth: 1024,
+                onLeave: function(index, nextIndex, direction){
+                    console.log('Leave slide: ' + index);
+
+                    //for box-wrap animate
+                    var box = $('#section' + index + ' .box-wrap');
+                        box.removeClass('show');
+
+                    // for line animate
+                    var line = $('#section' + index + ' .line');
+                        if (!($('#section' + index).hasClass('section-sides'))) {
+                            line.removeClass('show');
+                        }
+
+                    // for list animate
+                    var list = $('#section' + index + ' .how-work-number');
+                        list.removeClass('show');
+
+                    //for sides section animate
+                    if ($('#section' + index).hasClass('section-sides')) {
+                        var sidesSlide = $('.section-sides'),
+                            sidesLine = sidesSlide.find('.line'),
+                            sidesArrow = sidesSlide.find('.side-arrow');
+                            // sidesImg = sidesSlide.find('.side-img');
+
+                            sidesLine.removeClass('show');
+                            sidesArrow.removeClass('show');
+                            // sidesImg.removeClass('show');
+                    }
+
+                },
                 afterLoad: function (anchorLink, index) {
                     console.log('Current slide: ' + anchorLink);
                     //for left menu
@@ -166,26 +209,85 @@ jQuery(document).ready(function($) {
 
         }
 
-        fullpageCustomInitialize(maxH);
-
-        $(window).on('resize', function () {
-            var maxH            = maxHeight(box);
-
-            setTimeout(function () {
-                if ( $('html').hasClass('fp-enabled') ) {
-                    $.fn.fullpage.destroy('all');
+        // fullpageCustomInitialize(maxH);
+        $(window).on('load', function () {
+            if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+                var maxH = maxHeight(box);
+                if ($(window).width() > 1024) {
+                    setTimeout(function () {
+                        fullpageCustomInitialize(maxH);
+                    }, 300);
                 }
-                fullpageCustomInitialize(maxH);
-            }, 10);
+            } else {
+                if (!($('body').hasClass('mob-device'))) {
+                    $('body').addClass('mob-device');
+                }
+            }
         });
 
-        //for left menu
-        $('.nav-list a').on('click', function () {
-            var list = $(this).parents('.nav-list').find('li');
-            list.removeClass('active');
-            $(this).parent().addClass('active');
-        })
+        $(window).on('resize', function () {
+            if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+                var maxH = maxHeight(box);
+                if ($('body').hasClass('mob-device')) {
+                    $('body').removeClass('mob-device');
+                }
+                if ($(window).width() > 1024) {
+                    var maxH = maxHeight(box);
+                    setTimeout(function () {
+                        if ($('html').hasClass('fp-enabled')) {
+                            $.fn.fullpage.destroy('all');
+                        }
+                        fullpageCustomInitialize(maxH);
+                    }, 10);
+                } else {
+                    if ($('html').hasClass('fp-enabled')) {
+                        $.fn.fullpage.destroy('all');
+                    }
+                }
+            } else {
+                if (!($('body').hasClass('mob-device'))) {
+                    $('body').addClass('mob-device');
+                }
+                if ($('html').hasClass('fp-enabled')) {
+                    $.fn.fullpage.destroy('all');
+                }
+            }
+
+        });
     }
+
+    //for left menu
+    $('.nav-list a').on('click', function () {
+        var list = $(this).parents('.nav-list').find('li');
+        list.removeClass('active');
+        $(this).parent().addClass('active');
+    })
+
+    //for mob menu
+    $('.mobile-menu a').on('click', function () {
+        event.preventDefault();
+        var anchor = $(this).parent().attr('data-menuanchor');
+
+        $('html,body').animate({
+            scrollTop: $('[data-anchor = '+ anchor +']').offset().top - 49
+        }, 500);
+        setTimeout(function () {
+            $('.mobile-menu-toggle').toggleClass('active');
+            $('.mobile-menu-box').toggleClass('showing');
+            $(document.body).toggleClass('overflow');
+        }, 350);
+    });
+
+    if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+        // if ($(window).width() > 1024) {}
+
+    } else {
+        var section = $('.section');
+        myList.forEach(function(item, i) {
+            section.eq(i).attr('data-anchor', item);
+        });
+    }
+
 
     //for input file
     $('input.input-file').on('change', function () {
@@ -228,28 +330,25 @@ jQuery(document).ready(function($) {
     });
 
 
-    // $(".fa-times").on("click", function () {
-    //     $(this).parents("li").remove();
-    //     var count = $(this).parents(".file-list").find('li').length;
-    //     $(this).parents(".file-list-box").find(".file-count").text(count);
-    // });
     //for review slider
-    // $(window).on('load resize', function () {
-    //     if($('.reviews-slider')) {
-    //         var sliders = $('.reviews-slider');
-    //             sliders.each(function (i) {
-    //                 var boxWrap = sliders.eq(i).find('.review-box'),
-    //                     box = boxWrap.addClass('test-show').find('.review-text'),
-    //                     boxHeight = maxHeight(box) + 86;
-    //                     if (boxHeight < 372) {
-    //                         boxHeight = 372;
-    //                     }
-    //                     setTimeout(function () {
-    //                         boxWrap.removeClass('test-show').height(boxHeight);
-    //                     }, 200);
-    //             })
-    //     }
-    // });
+    $(window).on('load resize', function () {
+        if($('.reviews-slider')) {
+            var sliders = $('.reviews-slider'),
+                width = $(window).width();
+
+                sliders.each(function (i) {
+                    var boxWrap = sliders.eq(i).find('.reviews-list'),
+                        box = boxWrap.find('.review-box'),
+                        boxHeight = maxHeight(box);
+                        if (boxHeight < 372) {
+                            boxHeight = 372;
+                        }
+                        // setTimeout(function () {
+                            boxWrap.height(boxHeight);
+                        // }, 200);
+                })
+        }
+    });
     $(window).on('load', function () {
         $('.reviews-nav li').on('click', function () {
             var slider = $(this).parents('.reviews-slider'),
@@ -276,43 +375,48 @@ jQuery(document).ready(function($) {
         });
     });
 
-    //for person form
-    $('.icon-letter.person').on('click', function () {
-        if(!($(this).hasClass('show'))) {
-            var personForm = $(this).parents('.person-box').next();
-            personForm.addClass('show');
-        }
+    //for with-whom section
+    $(window).on('load resize', function () {
+        var widthW = $(window).width(),
+            tableW = $('.with-whom .with-whom-table'),
+            cellWF = tableW.find('.with-whom-cell.first'),
+            cellWM = tableW.find('.with-whom-cell.middle');
+
+            if (widthW > 1024) {
+                if (!(cellWF.hasClass('move'))) {
+                    cellWF.addClass('move');
+                    cellWM.removeClass('move');
+                    cellWF.prependTo(tableW);
+                }
+            } else {
+                if (!(cellWM.hasClass('move'))) {
+                    cellWM.addClass('move');
+                    cellWF.removeClass('move');
+                    cellWM.prependTo(tableW);
+                }
+            }
     });
 
-    //for tooltip
-    // $('span.tooltip-icon').each(function() {
-    //     var el = $(this),
-    //         title = el.attr('title');
-    //     if (title && title != '') {
-    //         el.attr('title', '').append('<div>' + title + '</div>');
-    //         setTimeout(function () {
-    //             var width = el.find('div').width();
-    //             var height = el.find('div').height();
-    //             el.hover(
-    //                 function() {
-    //                     el.find('div')
-    //                         .clearQueue()
-    //                         .delay(200)
-    //                         .animate({width: width + 20, height: height + 20}, 200).show(200)
-    //                         .animate({width: width, height: height}, 200);
-    //                 },
-    //                 function() {
-    //                     el.find('div')
-    //                         .animate({width: width + 20, height: height + 20}, 250)
-    //                         .animate({width: 'hide', height: 'hide'}, 250);
-    //                 }
-    //             ).mouseleave(function() {
-    //                 if (el.children().is(':hidden')) el.find('div').clearQueue();
-    //             });
-    //         },300);
-    //
-    //     }
-    // });
+
+    //for person form
+    $('.icon-letter.person, .close-form').on('click', function () {
+        var section = $(this).parents('.section'),
+            openPersonForm = section.find('.with-whom-cell.show'),
+            personForm = $(this).parents('.with-whom-cell');
+
+            openPersonForm.removeClass('show');
+
+            if ($(this).hasClass('person')) {
+                if(!(personForm.hasClass('show'))) {
+                    personForm.addClass('show');
+                }
+            } else if ($(this).hasClass('close-form')) {
+                if(personForm.hasClass('show')) {
+                    personForm.removeClass('show');
+                }
+            }
+    });
+
 
     //for popup
     if ($('.open-popup')) {
@@ -328,7 +432,6 @@ jQuery(document).ready(function($) {
             $('.coll-back-btn').fadeIn(350);
         }, 3000);
     }
-
     $('.datepicker-here').datepicker({
         autoClose: true
     });
@@ -415,18 +518,21 @@ jQuery(document).ready(function($) {
     toolTip();
 
     // initialize validate plugin on the form
-    $(".custom-form").validate({
-        errorClass: 'error',
-        errorPlacement: function(error, element) { },
-        rules: {
-            field1: {
-                required: true
-            },
-            field2: {
-                required: true,
-                minlength: 7
+    var forms =  $(".custom-form");
+    forms.each(function () {
+        $(this).validate({
+            errorClass: 'error',
+            errorPlacement: function(error, element) { },
+            rules: {
+                field1: {
+                    required: true
+                },
+                field2: {
+                    required: true,
+                    minlength: 7
+                }
             }
-        }
-    });
+        });
+    })
 
 });

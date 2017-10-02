@@ -13,12 +13,120 @@
     <link href="assets/css/datepicker.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/screen.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <style type="text/css">
+        #hellopreloader>p{display:none;}
+        #hellopreloader_preload{display: block;position: fixed;z-index: 999;top: -20px;left: 0; bottom: 0; width: 100%; background: #000F3E;}
+        #pulse{
+            width: 240px;
+            height: 81px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -120px;
+            margin-top: -40px;
+            animation-name: pulse;
+            -webkit-animation-name: pulse;
+
+            animation-duration: 2s;
+            -webkit-animation-duration: 2s;
+
+            animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes pulse {
+            0% {
+                -webkit-transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                -webkit-transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 
 <body>
+<div id="hellopreloader"><div id="hellopreloader_preload" style="opacity: 1; display: block;"><img id="pulse" src="img/logo_svg.svg"></div></div>
+<script type="text/javascript">
+    var hellopreloader = document.getElementById("hellopreloader_preload");
+    var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+    function preventDefault(e) {
+        e = e || window.event;
+        if (e.preventDefault)
+            e.preventDefault();
+        e.returnValue = false;
+    }
+
+    function preventDefaultForScrollKeys(e) {
+        if (keys[e.keyCode]) {
+            preventDefault(e);
+            return false;
+        }
+    }
+
+    function disableScroll() {
+        if (window.addEventListener) // older FF
+            window.addEventListener('DOMMouseScroll', preventDefault, false);
+        window.onwheel = preventDefault; // modern standard
+        window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+        window.ontouchmove  = preventDefault; // mobile
+        document.onkeydown  = preventDefaultForScrollKeys;
+    }
+
+    function enableScroll() {
+        if (window.removeEventListener)
+            window.removeEventListener('DOMMouseScroll', preventDefault, false);
+        window.onmousewheel = document.onmousewheel = null;
+        window.onwheel = null;
+        window.ontouchmove = null;
+        document.onkeydown = null;
+    }
+
+    disableScroll();
+
+    function fadeOutnojquery(el){
+        el.style.opacity = 1;
+        var interhellopreloader = setInterval(function(){
+            el.style.opacity = el.style.opacity - 0.05;
+            if (el.style.opacity <=0.05){
+                clearInterval(interhellopreloader);
+                hellopreloader.style.display = "none";
+            }
+        },50);
+    }
+    window.onload = function(){
+        fadeOutnojquery(hellopreloader);
+        setTimeout(function () {
+            enableScroll();
+        }, 700)
+    };
+</script>
+
     <div class="wrapper">
         <header class="header">
 
@@ -26,10 +134,18 @@
                 <div class="mobile-menu-box">
                     <div class="mobile-menu-inner">
                         <ul class="mobile-menu">
-                            <li><a href="#">главная</a></li>
-                            <li><a href="#">алгоритм работы</a></li>
-                            <li><a href="#">цена</a></li>
-                            <li><a href="#">контакты</a></li>
+                            <li data-menuanchor="main">
+                                <a href="#main">Главная</a>
+                            </li>
+                            <li data-menuanchor="how-working">
+                                <a href="#how-working">Алгоритм работы</a>
+                            </li>
+                            <li data-menuanchor="price-formation">
+                                <a href="#price-formation">цена</a>
+                            </li>
+                            <li data-menuanchor="contact">
+                                <a href="#contact">Контакты</a>
+                            </li>
                         </ul>
                         <ul class="contact-list">
                             <li>
@@ -80,23 +196,25 @@
 
         <div class="nav">
             <ul class="nav-list">
-                <li data-menuanchor="firstPage" class="active">
-                    <a href="#firstPage">Главная</a>
+                <li data-menuanchor="main" class="active">
+                    <a href="#main">Главная</a>
                 </li>
-                <li data-menuanchor="9thPage">
-                    <a href="#9thPage">Алгоритм работы</a>
+                <li data-menuanchor="how-working">
+                    <a href="#how-working">Алгоритм работы</a>
                 </li>
-                <li data-menuanchor="10thPage">
-                    <a href="#10thPage">цена</a>
+                <li data-menuanchor="price-formation">
+                    <a href="#price-formation">цена</a>
                 </li>
-                <li data-menuanchor="14thPage">
-                    <a href="#14thPage">Контакты</a>
+                <li data-menuanchor="contact">
+                    <a href="#contact">Контакты</a>
                 </li>
                 <li data-menuanchor="fullpage" class="last-section">
-                    <a href="#fullpage">вверх</a>
+                    <a href="#main">вверх</a>
                 </li>
             </ul>
         </div>
+
+
         <div id="fullpage">
             <div class="section fp-auto-height-responsive section-hero animate-bg" id="section1">
                 <div class="container">
@@ -111,7 +229,7 @@
                             налоговых споров
                         </h1>
                         <!--<button class="button" data-text="Send Message"><span>Send Message</span></button>-->
-                        <a class="btn open-popup" href="#call-back" data-text="начать работу"><span>начать работу</span></a>
+                        <a class="btn mob-inverse open-popup" href="#call-back" data-text="начать работу"><span>начать работу</span></a>
 
                         <div class="hero-btn-box">
                             <a href="tel:+38-044-225-92-91">+38-044-225-92-91</a>
@@ -675,19 +793,19 @@
                                         <ul class="coll-2">
                                             <li>
                                                 <input type="checkbox" class="checkbox" id="p-quickly" name="p-quickly">
-                                                <label for="p-quickly">
+                                                <label for="p-quickly" class="quickly-label">
                                                     <span class="radio-title">Срочно
-                                                        <span class="tooltip-icon"
-                                                              rel="tooltip"
-                                                              title="<span>ДОПЛАТА ЗА СРОЧНОСТЬ</span> обусловлена достаточно сжатыми сроками для
+                                                    </span>
+                                                </label>
+                                                <span class="tooltip-icon"
+                                                      rel="tooltip"
+                                                      title="<span>ДОПЛАТА ЗА СРОЧНОСТЬ</span> обусловлена достаточно сжатыми сроками для
                                                                     обжалования решений налоговых органов. Пропуск указанных сроков значительно
                                                                     усложнят процедуру обжалования. Мы сделаем все возможное, что бы эти сроки
                                                                     не были пропущены, но мы вынуждены будем выполнить указанную работу
                                                                     в срочном авральном порядке, с привлечением дополнительных специалистов,
                                                                      в ненормированном графике и с отложением решений текущих вопросов.">
                                                         </span>
-                                                    </span>
-                                                </label>
                                             </li>
                                             <li>
                                                 <span class="select-wrap">
@@ -769,8 +887,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="with-whom-cell" style="background-image: url(img/p_chumakov.jpg);">
-                        <div class="person-form show">
+                    <div class="with-whom-cell show">
+                        <div class="with-whom-cell-bg" style="background-image: url(img/form_bg.jpg);"></div>
+                        <div class="person-form-wrap">
+                            <div class="person-form show">
                             <div class="person-form-box">
                                 <h4 class="person-form-title">Заполните данные для начала нашей работы</h4>
                                 <form class="custom-form">
@@ -826,14 +946,15 @@
                                 </form>
                             </div>
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="section fp-auto-height-responsive with-whom" id="section11">
                 <div class="with-whom-table">
-                    <div class="with-whom-cell first" style="background-image: url(img/p_kostenko.jpg);">
-                        <!--<img class="bg-img" src="img/p_kostenko.jpg" alt="">-->
+                    <div class="with-whom-cell first">
+                        <div class="with-whom-cell-bg" style="background-image: url(img/p_kostenko.jpg);"></div>
                         <div class="person-box">
                             <h4 class="person-name">Костенко Виктория</h4>
                             <span class="person-position"> Управляющий партнер Компании, адвокат</span>
@@ -841,60 +962,63 @@
                             <div class="person-more">
                             </div>
                         </div>
-                        <div class="person-form">
-                            <div class="person-form-box">
-                                <h4 class="person-form-title">Вы можете записаться на консультацию прямо сейчас</h4>
-                                <form class="custom-form">
-                                    <ul class="form-list">
-                                        <li>
-                                            <ul class="input-list">
-                                                <li>
-                                                    <div class="input-wrapper">
-                                                        <input type="text" class="input-style required-dot" required>
-                                                        <span class="placeholder" data-placeholder="имя"></span>
-                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="input-wrapper">
-                                                        <input type="tel" class="input-style required-dot" required>
-                                                        <span class="placeholder" data-placeholder="телефон"></span>
-                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <ul class="input-list">
-                                                <li>
-                                                    <input type="email" class="input-style" placeholder="e-mail" >
-                                                </li>
-                                                <li>
-                                                    <div class="file-wrap">
-                                                        <input id="d-file" type="file" class="input-file" name="files" multiple>
-                                                        <label for="d-file" class="input-file-trigger">прикрепить файл</label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
-                                    </ul>
-                                    <div class="form-btn-box">
-                                        <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
-                                        <div class="file-list-box" >
-                                            <p>Прикреплено <span class="file-count">3</span> файла:</p>
-                                            <ul class="file-list">
-                                            </ul>
-                                            <div class="error-box" style="display: none;">
-                                                <p>Заполните все обязательные поля</p>
-                                            </div>
-                                            <div class="successful-box" style="display: none;">
-                                                <p>Cпасибо!</p>
-                                                <p>Мы обязательно с Вами свяжемся.</p>
+                        <div class="person-form-wrap">
+                            <span class="close-form"></span>
+                            <div class="person-form">
+                                <div class="person-form-box">
+                                    <h4 class="person-form-title">Вы можете записаться на консультацию прямо сейчас</h4>
+                                    <form class="custom-form">
+                                        <ul class="form-list">
+                                            <li>
+                                                <ul class="input-list">
+                                                    <li>
+                                                        <div class="input-wrapper">
+                                                            <input type="text" class="input-style required-dot" required>
+                                                            <span class="placeholder" data-placeholder="имя"></span>
+                                                            <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="input-wrapper">
+                                                            <input type="tel" class="input-style required-dot" required>
+                                                            <span class="placeholder" data-placeholder="телефон"></span>
+                                                            <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ul class="input-list">
+                                                    <li>
+                                                        <input type="text" class="input-style" placeholder="e-mail" required>
+                                                    </li>
+                                                    <li>
+                                                        <div class="file-wrap">
+                                                            <input id="r-file" type="file" class="input-file" name="files" multiple>
+                                                            <label for="r-file" class="input-file-trigger">прикрепить файл</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
+                                        </ul>
+                                        <div class="form-btn-box">
+                                            <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
+                                            <div class="file-list-box" >
+                                                <p>Прикреплено <span class="file-count">3</span> файла:</p>
+                                                <ul class="file-list">
+                                                </ul>
+                                                <div class="error-box" style="display: none;">
+                                                    <p>Заполните все обязательные поля</p>
+                                                </div>
+                                                <div class="successful-box" style="display: none;">
+                                                    <p>Cпасибо!</p>
+                                                    <p>Мы обязательно с Вами свяжемся.</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -913,8 +1037,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="with-whom-cell" style="background-image: url(img/p_chumakov.jpg);">
-                        <!--<img class="bg-img" src="img/p_chumakov.jpg" alt="">-->
+                    <div class="with-whom-cell">
+                        <div class="with-whom-cell-bg" style="background-image: url(img/p_chumakov.jpg);"></div>
                         <div class="person-box">
                             <h4 class="person-name">Чумаков Артем</h4>
                             <span class="person-position">Старший юрист Компании</span>
@@ -922,7 +1046,9 @@
                             <div class="person-more">
                             </div>
                         </div>
-                        <div class="person-form">
+                        <div class="person-form-wrap">
+                            <span class="close-form"></span>
+                            <div class="person-form">
                             <div class="person-form-box">
                                 <h4 class="person-form-title">Вы можете записаться на консультацию прямо сейчас</h4>
                                 <form class="custom-form">
@@ -952,8 +1078,8 @@
                                                 </li>
                                                 <li>
                                                     <div class="file-wrap">
-                                                        <input id="r-file" type="file" class="input-file" name="files" multiple>
-                                                        <label for="r-file" class="input-file-trigger">прикрепить файл</label>
+                                                        <input id="z-file" type="file" class="input-file" name="files" multiple>
+                                                        <label for="z-file" class="input-file-trigger">прикрепить файл</label>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -977,6 +1103,7 @@
                                     </div>
                                 </form>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -1241,9 +1368,10 @@
 
             <div class="section fp-auto-height-responsive section-map" id="section14">
                 <!--<div class="container">-->
-                    <div class="left-box" style="background-image: url(img/p_mnogolit.jpg)">
-                        <!--<img class="bg-img" src="img/p_mnogolit.jpg" alt="">-->
-                        <div class="person-box">
+                    <div class="left-box">
+                        <div class="with-whom-cell">
+                            <div class="with-whom-cell-bg" style="background-image: url(img/p_mnogolit.jpg);"></div>
+                            <div class="person-box">
                             <h4 class="person-name">Ольга Многолит</h4>
                             <span class="person-position">Специалист по работе с клиентами</span>
                             <span class="icon-letter person"></span>
@@ -1255,60 +1383,64 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="person-form">
-                            <div class="person-form-box">
-                                <h4 class="person-form-title">Вы можете записаться на консультацию прямо сейчас</h4>
-                                <form class="custom-form">
-                                    <ul class="form-list">
-                                        <li>
-                                            <ul class="input-list">
+                            <div class="person-form-wrap">
+                                <span class="close-form"></span>
+                                <div class="person-form">
+                                    <div class="person-form-box">
+                                        <h4 class="person-form-title">Вы можете записаться на консультацию прямо сейчас</h4>
+                                        <form class="custom-form">
+                                            <ul class="form-list">
                                                 <li>
-                                                    <div class="input-wrapper">
-                                                        <input type="text" class="input-style required-dot" required>
-                                                        <span class="placeholder" data-placeholder="имя"></span>
-                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
-                                                    </div>
+                                                    <ul class="input-list">
+                                                        <li>
+                                                            <div class="input-wrapper">
+                                                                <input type="text" class="input-style required-dot" required>
+                                                                <span class="placeholder" data-placeholder="имя"></span>
+                                                                <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="input-wrapper">
+                                                                <input type="tel" class="input-style required-dot" required>
+                                                                <span class="placeholder" data-placeholder="телефон"></span>
+                                                                <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </li>
                                                 <li>
-                                                    <div class="input-wrapper">
-                                                        <input type="tel" class="input-style required-dot" required>
-                                                        <span class="placeholder" data-placeholder="телефон"></span>
-                                                        <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
-                                                    </div>
+                                                    <ul class="input-list">
+                                                        <li>
+                                                            <input type="text" class="input-style" placeholder="e-mail" required>
+                                                        </li>
+                                                        <li>
+                                                            <div class="file-wrap">
+                                                                <input id="o-file" type="file" class="input-file" name="files" multiple>
+                                                                <label for="o-file" class="input-file-trigger">прикрепить файл</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </li>
+                                                <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <ul class="input-list">
-                                                <li>
-                                                    <input type="email" class="input-style" placeholder="e-mail">
-                                                </li>
-                                                <li>
-                                                    <div class="file-wrap">
-                                                        <input id="h-file" type="file" class="input-file" name="files" multiple>
-                                                        <label for="h-file" class="input-file-trigger">прикрепить файл</label>
+                                            <div class="form-btn-box">
+                                                <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
+                                                <div class="file-list-box" >
+                                                    <p>Прикреплено <span class="file-count">3</span> файла:</p>
+                                                    <ul class="file-list">
+                                                    </ul>
+                                                    <div class="error-box" style="display: none;">
+                                                        <p>Заполните все обязательные поля</p>
                                                     </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><textarea name="text" class="input-style" placeholder="оставить комментарий"></textarea></li>
-                                    </ul>
-                                    <div class="form-btn-box">
-                                        <button class="btn"  data-text="Отправить"><span>Отправить</span></button>
-                                        <div class="file-list-box" >
-                                            <p>Прикреплено <span class="file-count">3</span> файла:</p>
-                                            <ul class="file-list">
-                                            </ul>
-                                            <div class="error-box" style="display: none;">
-                                                <p>Заполните все обязательные поля</p>
+                                                    <div class="successful-box" style="display: none;">
+                                                        <p>Cпасибо!</p>
+                                                        <p>Мы обязательно с Вами свяжемся.</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="successful-box" style="display: none;">
-                                                <p>Cпасибо!</p>
-                                                <p>Мы обязательно с Вами свяжемся.</p>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1317,8 +1449,8 @@
                         <script>
                             var mapLat = 50.4523985,
                                 mapLng = 30.4893798;
+
                         </script>
-                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu0jixMc1Qw-Vmf26uuvV7wBlI6t0vV0o&callback=initMap" async defer></script>
                     </div>
                     <footer id="footer">
                         <!--<div class="container">-->
@@ -1329,7 +1461,7 @@
                                 <div class="footer-box">
                                     <div class="footer-logo">
                                         <a href="index.html">
-                                            <img src="img/footer_logo@2x.png" content="Kostenko">
+                                            <img src="img/logo_footer.svg" content="Kostenko">
                                         </a>
                                     </div>
                                 </div>
@@ -1460,9 +1592,12 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js"></script>
+    <!--<script src="assets/js/scrolloverflow.min.js"></script>-->
     <script src="assets/js/jquery.fullPage.min.js"></script>
+    <!--<script src="assets/js/smooth-scroll.min.js"></script>-->
     <script src="assets/js/magnifi.js"></script>
     <script src="assets/js/datepicker.min.js"></script>
 	<script src="assets/js/custom/scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu0jixMc1Qw-Vmf26uuvV7wBlI6t0vV0o&callback=initMap" async="" ></script>
 </body>
 </html>

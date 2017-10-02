@@ -444,7 +444,7 @@ select {
 }
 .checkbox:not(checked) + label {
   position: relative; /* будем позиционировать псевдочекбокс относительно label */
-  padding: 0 0 0 60px; /* оставляем слева от label место под псевдочекбокс */
+  padding: 0 15px 0 60px; /* оставляем слева от label место под псевдочекбокс */
 }
 /* Оформление первой части чекбокса в выключенном состоянии (фон). */
 .checkbox:not(checked) + label:before {

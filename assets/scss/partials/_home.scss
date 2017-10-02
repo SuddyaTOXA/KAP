@@ -226,7 +226,8 @@ body{
           right: 0;
           @include css3-prefix('transition-delay','0.15s');
         }
-        &.show {
+        &.show,
+        .mob-device & {
           &:before,
           &:after,
           .box:before,
@@ -246,7 +247,8 @@ body{
             @include transition($transition-other);
             @include css3-prefix('transform',' translate(0, -50%)');
             @include css3-prefix('transition-delay','.5s');
-            .show & {
+            .show &,
+            .mob-device & {
               height: 60%;
             }
           }
@@ -478,8 +480,8 @@ body{
       @include transition(.7s);
     }
 .section-winner {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  //padding-top: 40px;
+  //padding-bottom: 40px;
   background-color: #000F3E;
   .container {
     overflow: hidden;
@@ -684,7 +686,7 @@ body{
     }
   }
   .with-whom-cell {
-    width: ($col * 5.125);
+    width: ($col * 5.124);
     padding: 40px 20px 40px;
     background-position: center;
     &.big {
@@ -924,7 +926,8 @@ body{
         font-weight: $bold;
         line-height: $line-height-heading;
         @include transition($transition-other);
-        &.show {
+        &.show,
+        .mob-device & {
           opacity: 1;
         }
       }
@@ -951,7 +954,7 @@ body{
   padding-left: 0;
   .with-whom-cell {
     &.big {
-      width: ($col * 8.15);
+      width: ($col * 8.145);
     }
     &.first {
       padding: 40px 20px 40px 50px;
@@ -1004,6 +1007,10 @@ body{
           word-spacing: .02em;
         }
       }
+      .quickly-label {
+        top: 4px;
+        float: left;
+      }
       .coll-3 {
         display: table;
         width: 100%;
@@ -1011,7 +1018,7 @@ body{
           display: table-cell;
           width: ($col * 4);
           padding: 1px 16px;
-          vertical-align: middle;
+          vertical-align: bottom;
         }
       }
       .coll-2 {
@@ -1033,7 +1040,7 @@ body{
       }
       .radio-title {
         position: relative;
-        top: -7px;
+        //top: -7px;
         display: inline-block;
       }
     .price-result-box {
@@ -1075,8 +1082,9 @@ body{
         left: 50%;
         font-family: $font-main;
         font-size: 16px;
+        line-height: 22px;
+        text-align: center;
         font-weight: $bold;
-        line-height: $line-height;
         color: $color-text3;
         @include transform();
       }
@@ -1233,6 +1241,7 @@ body{
     overflow: hidden;
     display: table-cell;
     width: ($col * 3.85);
+    background-color: $white;
     @include bg(inherit);
     &.middle {
       width: ($col * 4.3);
@@ -1257,6 +1266,30 @@ body{
       padding-left: 20px;
     }
   }
+    .with-whom-cell-bg {
+      position: absolute;
+      z-index: 15;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      @include bg(inherit);
+      &:after {
+        position: absolute;
+        content: '';
+        z-index: 16;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        height: 65%;
+        @include css3-prefix('background','linear-gradient( 360deg, rgba(3,23,76, .95) 0%, rgba(24,91,198, .4) 70%, rgba(24,91,198, 0.1) 90%,rgba(24,91,198, 0) 100%)');
+        @include transition($transition-other);
+        .show & {
+          height: 100%;
+          @include css3-prefix('transition-delay','0s');
+        }
+      }
+    }
     .with-whom-box {
       max-width: 560px;
       margin: 0 auto;
@@ -1299,7 +1332,8 @@ body{
           background-color: $color-bg3;
           @include transition($transition-other);
         }
-        &.show {
+        &.show,
+        .mob-device & {
           &:after {
             width: 100%;
           }
@@ -1351,6 +1385,7 @@ body{
 }
   .reviews-wrap {
     overflow: hidden;
+    //position: relative;
     max-width: 762px;
     min-height: 494px;
     padding: 92px 58px 28px 58px;
@@ -1361,7 +1396,9 @@ body{
       border-color: $black;
     }
   }
-    .reviews-list {}
+    .reviews-list {
+      position: relative;
+    }
       .review-header-box {
         display: table;
         width: 100%;
@@ -1391,9 +1428,11 @@ body{
             }
           }
       .review-box {
-        display: none;
-        position: relative;
-        min-height: 372px;
+        display: block;
+        position: absolute;
+        top: -200%;
+        opacity: 0;
+        //min-height: 372px;
         padding-bottom: 86px;
         &:before {
           position: absolute;
@@ -1411,10 +1450,12 @@ body{
           }
         }
         .trust & {
-          min-height: 440px;
+          //min-height: 440px;
         }
         &.show {
-          display: block;
+          //display: block;
+          opacity: 1;
+          top: 0;
         }
         &.test-show {
           display: block;
@@ -1519,6 +1560,12 @@ body{
 
 .section-map {
   background-color: $white;
+  .person-form {
+    padding: 40px 10px 40px 50px;
+  }
+  .person-box {
+    padding-left: 50px;
+  }
   .left-box,
   .right-box {
     float: left;
@@ -1527,7 +1574,9 @@ body{
     height: calc(100vh - 184px);
   }
   .left-box {
+    display: table;
     position: relative;
+    top: -1px;
     width: ($col * 3.7);
     overflow: hidden;
     @include bg(inherit);
@@ -1540,6 +1589,9 @@ body{
         max-height: 400px;
       }
     }
+    .with-whom-cell {
+      width: 100%;
+    }
   }
   .right-box {
     position: relative;
@@ -1551,19 +1603,19 @@ body{
 }
   .person-box {
     position: absolute;
-    z-index: 10;
+    z-index: 20;
     width: 100%;
     left: 0;
     bottom: 0;
-    padding: 60px 20px 36px 40px;
+    padding: 20px 20px 36px 40px;
     text-align: center;
     color: $white;
-    background-color: rgba(32, 87 ,188, .6);
-    background: -moz-linear-gradient(top,  rgba(32,87,188,0) 1%, rgba(32,87,188,0) 2%, rgba(32,87,188,0.24) 16%, rgba(32,87,188,0.51) 32%, rgba(32,87,188,0.69) 47%, rgba(32,87,188,0.8) 56%, rgba(32,87,188,0.93) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(32,87,188,0) 1%,rgba(32,87,188,0) 2%,rgba(32,87,188,0.24) 16%,rgba(32,87,188,0.51) 32%,rgba(32,87,188,0.69) 47%,rgba(32,87,188,0.8) 56%,rgba(32,87,188,0.93) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(32,87,188,0) 1%,rgba(32,87,188,0) 2%,rgba(32,87,188,0.24) 16%,rgba(32,87,188,0.51) 32%,rgba(32,87,188,0.69) 47%,rgba(32,87,188,0.8) 56%,rgba(32,87,188,0.93) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002057bc', endColorstr='#ed2057bc',GradientType=0 ); /* IE6-9 */
     @include transition($transition-other);
+    @include css3-prefix('transition-delay','.35s');
+    .show & {
+      bottom: -110%;
+      @include css3-prefix('transition-delay','0s');
+    }
     > * {
       display: block;
       max-width: 355px;
@@ -1575,7 +1627,7 @@ body{
   }
     .person-name {
       margin-bottom: 13px;
-      max-width: 380px;
+      max-width: 410px;
       font-size: 2rem;
       font-weight: $bold;
       line-height: $line-height-heading;
@@ -1606,54 +1658,117 @@ body{
       max-height: 0;
       font-size: 1.1rem;
       letter-spacing: $letter-spacing;
-      @include transition(max-height .35s);
+      @include transition(2s);
     }
-    .person-form {
+    .person-form-wrap {
       position: absolute;
-      display: table;
-      overflow-x: scroll;
-      z-index: 20;
+      z-index: 10;
+      left: 0;
       top: 0;
-      right: -100%;
       width: 100%;
       height: 100%;
-      max-height: 100vh;
-      padding: 40px 10px 40px;
-      background-image: url(../../img/form_bg.jpg);
-      @include bg();
+      @include css3-prefix('transition-delay','0s');
       @include transition($transition-other);
-      &.show {
-        right: 0;
+      opacity: 0;
+      .show & {
+        overflow-y: auto;
+        overflow-x: hidden;
+        opacity: 1;
+        z-index: 25;
+        @include css3-prefix('transition-delay','.35s');
+        @include css3-prefix('background','linear-gradient( 360deg, rgba(3,23,76, .9) 0%, rgba(24,91,198, .9) 100%)');
       }
-      .form-list {
-        .input-list {
-          > li {
-            width: 100%;
+    }
+
+      .close-form {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        color: transparent;
+        @include transition($transition-other);
+        cursor: pointer;
+        &:before,
+        &:after {
+          position: absolute;
+          z-index: 999999;
+          display: block;
+          content: '';
+          cursor: pointer;
+          height: 1px;
+          width: 38px;
+          background-color: rgba(255, 255, 255, 0.82);
+          @include border-radius(2px);
+          @include css3-prefix('transition','all 0.35s');
+        }
+        &:before {
+          top: 13px;
+          left: -5px;
+          @include css3-prefix('transform','rotate(45deg)');
+        }
+        &:after {
+          bottom: 13px;
+          right: -5px;
+          @include css3-prefix('transform','rotate(-45deg)');
+        }
+        &:hover {
+          @include css3-prefix('transform',rotate(360deg));
+          &:before,
+          &:after {
+            background-color: rgba(255, 255, 255, 1);
           }
         }
       }
-      .custom-form {
-        max-width: 363px;
-        margin: 0 auto;
-      }
-    }
-      .person-form-box {
-        display: table-cell;
+      .person-form {
+        //position: absolute;
+        display: table;
+        //overflow-x: scroll;
+        z-index: 20;
+        //top: 0;
+        //right: -100%;
+        //width: 100%;
+        //height: 100%;
+        //max-height: 100vh;
         width: 100%;
-        height: 100px;
-        vertical-align: middle;
+        height: 100%;
+        padding: 40px 10px 40px;
+        //background-image: url(../../img/form_bg.jpg);
+        //@include bg();
+        //@include transition($transition-other);
+        //&.show {
+        //  right: 0;
+        //}
+        .form-list {
+          .input-list {
+            > li {
+              width: 100%;
+            }
+          }
+        }
+        .custom-form {
+          max-width: 363px;
+          margin: 0 auto;
+        }
       }
-      .person-form-title {
-        max-width: 520px;
-        margin: 0 auto 61px;
-        font-size: 1.75rem;
-        font-weight: $light;
-        line-height: $line-height-heading;
-        letter-spacing: .02em;
-        color: $white;
-        text-transform: uppercase;
-        text-align: center;
-      }
+        .person-form-box {
+          display: table-cell;
+          width: 100%;
+          height: 100px;
+          vertical-align: middle;
+        }
+        .person-form-title {
+          max-width: 520px;
+          margin: 0 auto 61px;
+          font-size: 1.75rem;
+          font-weight: $light;
+          line-height: $line-height-heading;
+          letter-spacing: .02em;
+          color: $white;
+          text-transform: uppercase;
+          text-align: center;
+        }
 
   .map-block {
     position: relative;
@@ -1671,8 +1786,8 @@ body{
   position: fixed;
   z-index: 100;
   display: none;
-  right: 40px;
-  bottom: 40px;
+  right: 20px;
+  bottom: 20px;
   width: 80px;
   height: 80px;
   border: 1px solid #d1d1d1;
@@ -1732,4 +1847,6 @@ body{
       @include transition($transition-other);
     }
   }
-
+html.fp-enabled, .fp-enabled body {
+  overflow: visible;
+}

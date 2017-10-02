@@ -61,9 +61,15 @@
       }
     }
   }
-
+    .contact-cell {
+      > * {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
     .contact-title {
-      font-size: 10px;
+      font-size: 13px;
       letter-spacing: $letter-spacing;
       color: #b4b1ae;
     }
@@ -71,16 +77,23 @@
     .contact-link {
       display: block;
       margin-bottom: 3px;
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: $letter-spacing;
       line-height: 1;
       color: $white;
     }
     a.contact-link {
+      margin-bottom: 8px;
       &:hover,
       &:focus {
         text-decoration: none;
         color: $color-text3;
+      }
+    }
+    a[href^="tel:"].contact-link {
+      color: $white;
+      &:focus {
+        color: $white;
       }
     }
   .contact-title,
