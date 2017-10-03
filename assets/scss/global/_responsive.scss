@@ -139,6 +139,9 @@
 }
 
 @media all and (max-width: 1024px) {
+  .orange-box {
+    display: none;
+  }
   a.btn,
   .btn {
     &.mob-inverse {
@@ -154,6 +157,7 @@
     }
   }
   .section-hero {
+    margin-top: 49px;
     height: 100vh;
     min-height: 420px;
   }
@@ -164,15 +168,11 @@
     }
   }
   .hero-box {
-    margin: 0 auto;
     min-height: 460px;
-    text-align: center;
   }
   .hero-title {
-    margin-top: 24px;
     margin-bottom: 24px;
     font-size: 4rem;
-    //text-align: center;
     span {
       font-size: 1.3rem;
     }
@@ -422,6 +422,15 @@
         padding: 40px 10px !important;
       }
 
+  .section-necessary,
+  .trusting {
+    .with-whom-cell {
+      height: 800px;
+      &.big {
+        height: auto;
+      }
+    }
+  }
   .trusting {
     .with-whom-table {
       display: table;
@@ -487,13 +496,13 @@
     }
   }
   .coll-back-btn {
-    right: 10px;
-    bottom: 10px;
-    width: 40px;
-    height: 40px;
+    right: 25px;
+    bottom: 25px;
+    width: 55px;
+    height: 55px;
     background: rgba(209, 209, 209, 0.7);
     &:after {
-      font-size: 22px;
+      font-size: 28px;
     }
     &:hover,
     &:focus {
@@ -575,6 +584,10 @@
 }
 
 @media all and (max-width: 767px) {
+  .coll-back-btn {
+    right: 10px;
+    bottom: 10px;
+  }
   a.btn,
   .btn {
     min-width: 175px;
@@ -702,18 +715,17 @@
       display: block;
     }
   }
+  .hero-box {
+    max-width: 470px;
+    margin: 0 auto;
+    text-align: center;
+  }
   .hero-title {
-    //margin-top: 24px;
-    //margin-bottom: 74px;
     font-size: 3rem;
-    //text-align: center;
     span {
       font-size: 1rem;
     }
   }
-  //.hero-btn-box {
-  //  display: block;
-  //}
 }
 
 @media (max-width: 767px) and (max-height: 480px) {
@@ -804,6 +816,12 @@
   }
   .reviews-nav-item-title {
     left: 22px;
+  }
+  .section-necessary,
+  .trusting {
+    .with-whom-cell {
+      height: 600px;
+    }
   }
 }
 

@@ -24,6 +24,12 @@
   .header-box {
     position: relative;
     height: 49px;
+    left: 0;
+    bottom: 0;
+    //.active & {
+    //  position: fixed;
+    //  bottom: -49px;
+    //}
   }
   .mob-logo {
     float: left;
@@ -33,6 +39,7 @@
     @include css3-prefix('transition', '0.35s');
     img {
       max-width: 100%;
+      width: 94px;
     }
   }
 

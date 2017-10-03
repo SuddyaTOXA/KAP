@@ -48,9 +48,11 @@
           color: $color-text2;
           opacity: 1;
         }
+
       }
       a {
         position: absolute;
+        z-index: 15;
         top: 50%;
         left: 50%;
         width: 200px;
@@ -66,6 +68,19 @@
         text-decoration: none;
         text-transform: uppercase;
         vertical-align: middle;
+      }
+      &.last-section {
+        &:hover,
+        &:focus {
+          a {
+            color: $color-text;
+            .icon-arrow-up {
+              &:before {
+                color: $color-text;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -87,6 +102,48 @@ body{
 
 .last-section {
   display: none;
+  margin-left: -10px;
+  .show & {
+    display: block;
+    z-index: 20;
+  }
+  &:after {
+    position: absolute;
+    content: '';
+    width: -webkit-calc(100% + 5px);
+    width: calc(100% + 5px);
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: $color-bg3;
+  }
+  .icon-arrow-up {
+    position: relative;
+    display: inline-block;
+    padding-left: 12px;
+    left: 12px;
+    font-size: 27px;
+    @include css3-prefix('transform', 'rotate(90deg)');
+  }
+}
+.penultimate-section {
+  .show & {
+    display: none;
+  }
+}
+.orange-box {
+  position: fixed;
+  z-index: 105;
+  left: 0;
+  bottom: 0;
+  max-width: 0;
+  width: 0;
+  background-color: $color-bg3;
+  @include transition(.35s);
+  &.animate {
+    width: 100%;
+    max-width: 4000px;
+  }
 }
 
 #fullpage {
@@ -584,7 +641,16 @@ body{
         margin-top: 45px;
         margin-left: 3px;
         .person-form & {
+          margin-left: 0;
           text-align: center;
+          a.btn,
+          .btn {
+            display: block;
+            margin: 0 auto;
+          }
+          .file-list {
+            text-align: center;
+          }
         }
       a.btn,
       .btn {
@@ -611,7 +677,8 @@ body{
       }
     }
       .file-list-box {
-        display: none;
+        //display: none;
+        display: table-cell;
         width: 100%;
         padding-left: 45px;
         //margin-top: -5px;
@@ -619,17 +686,21 @@ body{
         font-weight: $bold;
         color: $white;
         vertical-align: top;
-        &.show {
-          display: table-cell;
-          .person-form & {
-            display: block;
-            text-align: left;
-            margin-top: 20px;
-            padding-left: 0;
+        .person-form & {
+          display: block;
+          text-align: left;
+          margin-top: 20px;
+          padding-left: 0;
+          > p {
+            text-align: center;
           }
         }
-        p {
+        > p {
+          display: none;
           margin-bottom: 4px;
+        }
+        &.open > p {
+          display: block;
         }
       }
         .file-list {
@@ -667,12 +738,12 @@ body{
         }
       }
       .error-box {
-        padding: 10px;
-        border: 2px solid red;
+        //padding: 10px;
+        //border: 2px solid red;
       }
       .successful-box {
-        padding: 10px;
-        border: 2px solid green;
+        //padding: 10px;
+        //border: 2px solid green;
       }
 
 
@@ -830,8 +901,8 @@ body{
 }
 
 .section-how-work {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  //padding-top: 40px;
+  //padding-bottom: 40px;
   background-color: #ffffff;
 }
   .section-title {
@@ -1168,6 +1239,7 @@ body{
   text-align: left;
   font-size: 16px;
   color: #ffffff;
+  //max-width: 625px;
   background: #102D87;
   box-shadow: 0 3px 5px 0 rgba(1, 0, 0, 0.5);
   &.req {
@@ -1804,7 +1876,7 @@ body{
     content: '\e906';
     left: 50%;
     top: 50%;
-    font-family: 'icomoon-k' !important;
+    font-family: 'icomoon' !important;
     font-size: 40px;
     color: $color-text3;
     speak: none;

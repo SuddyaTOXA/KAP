@@ -297,7 +297,14 @@ select {
   letter-spacing: 0.02em;
   option {
     font-family: $font-main;
+    font-size: .85rem;
+    text-align: center;
   }
+  //outline: none;
+  //&:hover,
+  //&:focus {
+  //  outline: none;
+  //}
 }
 
 
@@ -367,6 +374,9 @@ select {
 
 .my-datepicker {
   position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
   &:after {
     position: absolute;
     content: '';
@@ -480,12 +490,14 @@ select {
 /* Сдвигаем переключатель чекбокса, когда он включен. */
 .checkbox:checked + label:after {
   left: 26px;
-  background-color: #57A800;
+  background-color: $color-bg3;
 }
 /* Показываем получение фокуса. */
 //.checkbox:focus + label:before {
 //  box-shadow: 0 0 0 3px rgba(255,255,0,.5);
 //}
 
-
+.datepicker {
+  @include border-radius(0);
+}
 

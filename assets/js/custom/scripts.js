@@ -97,8 +97,6 @@ jQuery(document).ready(function($) {
                 responsiveHeight: respHeight,
                 responsiveWidth: 1024,
                 onLeave: function(index, nextIndex, direction){
-                    console.log('Leave slide: ' + index);
-
                     //for box-wrap animate
                     var box = $('#section' + index + ' .box-wrap');
                         box.removeClass('show');
@@ -127,7 +125,6 @@ jQuery(document).ready(function($) {
 
                 },
                 afterLoad: function (anchorLink, index) {
-                    console.log('Current slide: ' + anchorLink);
                     //for left menu
                     function clearList() {
                         var navList = $('.nav-list li');
@@ -142,7 +139,7 @@ jQuery(document).ready(function($) {
                             if (!(item.hasClass('active'))) {
                                 clearList();
                                 item.addClass('active');
-                                console.log('Add class active to: ' + anchor);
+                                // console.log('Add class active to: ' + anchor);
                             }
 
                         }
@@ -299,8 +296,8 @@ jQuery(document).ready(function($) {
             fileList =fileParent.find('.file-list');
 
             if (count > 0) {
-                if (!(fileBox.hasClass('show'))) {
-                    fileBox.addClass('show');
+                if (!(fileBox.hasClass('open'))) {
+                    fileBox.addClass('open');
                 }
                 fileList.empty();
                 fileCount.text(count);
@@ -309,8 +306,8 @@ jQuery(document).ready(function($) {
                     fileList.append('<li>'+ $(this).get(0).files[i].name +'<i class="fa fa-times" aria-hidden="true"></i><script>$(".fa-times").on("click", function () { $(this).parents("li").remove(); })</script></li>')
                 }
             } else {
-                if (fileBox.hasClass('show')) {
-                    fileBox.removeClass('show');
+                if (fileBox.hasClass('open')) {
+                    fileBox.removeClass('open');
                 }
             }
     });
@@ -323,8 +320,8 @@ jQuery(document).ready(function($) {
             if (count > 0) {
                 fileCount.text(count);
             } else {
-                if (fileBox.hasClass('show')) {
-                    fileBox.removeClass('show');
+                if (fileBox.hasClass('open')) {
+                    fileBox.removeClass('open');
                 }
             }
     });
@@ -534,5 +531,38 @@ jQuery(document).ready(function($) {
             }
         });
     })
+
+    if ($('.nav-list').length) {
+        var nav = $('.nav'),
+            last = $('.last-section'),
+            lastH = last.height(),
+            boxAnimate = $('.orange-box'),
+            prev = $('.penultimate-section'),
+            sectionMap = $('.section-map').height();
+
+            boxAnimate.height(lastH)
+            console.log(lastH);
+
+        $(window).scroll(function() {
+            // for btn up
+            if  ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                if (!(nav.hasClass('show'))) {
+                    boxAnimate.addClass('animate');
+                    nav.addClass('show');
+                    setTimeout(function () {
+                        boxAnimate.removeClass('animate');
+                    }, 350);
+                }
+            }
+            if  ($(window).scrollTop() < $(document).height() - sectionMap * 2) {
+                // if (!(nav.hasClass('show'))) {
+                if (nav.hasClass('show')) {
+                    nav.removeClass('show');
+                }
+            }
+
+        });
+    }
+
 
 });
