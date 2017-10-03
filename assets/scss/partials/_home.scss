@@ -367,11 +367,24 @@ body{
               }
             }
 .section-hero {
-  padding-top: 40px;
-  padding-bottom: 40px;
   .bg-img {
     height: 100%;
+    &.mob {
+      display: none;
+    }
   }
+  .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+.mob-socrat {
+  display: none;
+  position: relative;
+  bottom: -1px;
+  margin: 0 auto;
+  height: auto;
+  max-width: 100%
 }
   .hero-box {
     max-width: 620px;
@@ -430,6 +443,9 @@ body{
     width: 100%;
     padding: 0 20px;
     height: 100vh;
+    .mob-device & {
+      height: auto;
+    }
   }
   .left-box,
   .right-box {
@@ -438,18 +454,23 @@ body{
     width: 50%;
     min-height: 100%;
     vertical-align: top;
+    .mob-device & {
+      min-height: unset;
+    }
   }
   .left-box {
     padding-right: 10px;
     .side-arrow {
       right: 100%;
-      &.show {
+      &.show,
+      .mob-device & {
         right: 0;
       }
     }
     .side-img {
       left: -100%;
-      &.show {
+      &.show,
+      .mob-device & {
         left: -15px;
       }
     }
@@ -462,7 +483,8 @@ body{
       img {
         @include css3-prefix('transform', 'rotate(180deg)');
       }
-      &.show {
+      &.show,
+      .mob-device & {
         left: 0
       }
     }
@@ -473,7 +495,8 @@ body{
     }
     .side-img {
       right: -100%;
-      &.show {
+      &.show,
+      .mob-device & {
         right: -92px;
       }
     }
@@ -489,7 +512,8 @@ body{
       img {
         //max-width: 100%;
       }
-      &.show {
+      &.show,
+      .mob-device & {
         opacity: 1;
       }
     }
@@ -500,7 +524,7 @@ body{
       display: inline-block;
       max-width: 500px;
       padding-top: 150px;
-      padding-bottom: 240px;
+      padding-bottom: 290px;
       .line {
         width: 126px;
         margin-bottom: 48px;
@@ -1126,13 +1150,14 @@ body{
     }
       .price {
         display: inline-block;
+        padding: 0 10px;
         font-size: 1.5rem;
         letter-spacing: $letter-spacing;
         vertical-align: middle;
       }
       .price-desc {
         display: inline-block;
-        margin-left: 20px;
+        padding: 0 10px;
         font-size: 15px;
         text-align: left;
         letter-spacing: $letter-spacing;
@@ -1327,6 +1352,9 @@ body{
     }
     .bg-img {
       height: 100%;
+    }
+    &.bg {
+      background-color: #E2E2E2;
     }
     &:hover {
       .person-more {
@@ -1533,9 +1561,6 @@ body{
           //display: block;
           opacity: 1;
           top: 0;
-        }
-        &.test-show {
-          display: block;
         }
       }
         .review-text {
@@ -1926,4 +1951,9 @@ body{
   }
 html.fp-enabled, .fp-enabled body {
   overflow: visible;
+}
+.mob-device {
+  .section {
+    min-height: unset;
+  }
 }

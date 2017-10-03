@@ -1,38 +1,38 @@
 function initMap() {
-        // Create a new StyledMapType object, passing it an array of styles,
-        // and the name to be displayed on the map type control.
-        var styledMapType = new google.maps.StyledMapType(
-            [{"featureType":"all","elementType":"all","stylers":[{"hue":"#008eff"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"0"},{"lightness":"0"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":"-60"},{"lightness":"-20"}]}],
-            {name: 'Styled Map'});
+    // Create a new StyledMapType object, passing it an array of styles,
+    // and the name to be displayed on the map type control.
+    var styledMapType = new google.maps.StyledMapType(
+        [{"featureType":"all","elementType":"all","stylers":[{"hue":"#008eff"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"0"},{"lightness":"0"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":"-60"},{"lightness":"-20"}]}],
+        {name: 'Styled Map'});
 
-        var image = 'site/img/geo.png';
-        // Create a map object, and include the MapTypeId to add
-        // to the map type control.
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: mapLat, lng: mapLng},
-            zoom: 14,
-            // disableDefaultUI: true,
-            // zoomControl: true,
-            zoomControl: true,
-            mapTypeControl: false,
-            scaleControl: false,
-            streetViewControl: false,
-            rotateControl: false,
-            fullscreenControl: true,
-            mapTypeControlOptions: {
-                mapTypeIds: ['styled_map']
-            }
-        });
+    var image = 'site/img/geo.png';
+    // Create a map object, and include the MapTypeId to add
+    // to the map type control.
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: mapLat, lng: mapLng},
+        zoom: 14,
+        // disableDefaultUI: true,
+        // zoomControl: true,
+        zoomControl: true,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: true,
+        mapTypeControlOptions: {
+            mapTypeIds: ['styled_map']
+        }
+    });
 
-        var beachMarker = new google.maps.Marker({
-            position: {lat: mapLat, lng: mapLng},
-            map: map,
-            icon: image
-        });
+    var beachMarker = new google.maps.Marker({
+        position: {lat: mapLat, lng: mapLng},
+        map: map,
+        icon: image
+    });
 
-        //Associate the styled map with the MapTypeId and set it to display.
-        map.mapTypes.set('styled_map', styledMapType);
-        map.setMapTypeId('styled_map');
+    //Associate the styled map with the MapTypeId and set it to display.
+    map.mapTypes.set('styled_map', styledMapType);
+    map.setMapTypeId('styled_map');
 }
 
 jQuery(document).ready(function($) {
@@ -94,33 +94,34 @@ jQuery(document).ready(function($) {
                 verticalCentered: true,
                 scrollingSpeed: 700,
                 scrollBar: true,
+                autoScrolling: false,
                 responsiveHeight: respHeight,
                 responsiveWidth: 1024,
                 onLeave: function(index, nextIndex, direction){
                     //for box-wrap animate
                     var box = $('#section' + index + ' .box-wrap');
-                        box.removeClass('show');
+                    box.removeClass('show');
 
                     // for line animate
                     var line = $('#section' + index + ' .line');
-                        if (!($('#section' + index).hasClass('section-sides'))) {
-                            line.removeClass('show');
-                        }
+                    if (!($('#section' + index).hasClass('section-sides'))) {
+                        line.removeClass('show');
+                    }
 
                     // for list animate
                     var list = $('#section' + index + ' .how-work-number');
-                        list.removeClass('show');
+                    list.removeClass('show');
 
                     //for sides section animate
                     if ($('#section' + index).hasClass('section-sides')) {
                         var sidesSlide = $('.section-sides'),
                             sidesLine = sidesSlide.find('.line'),
                             sidesArrow = sidesSlide.find('.side-arrow');
-                            // sidesImg = sidesSlide.find('.side-img');
+                        // sidesImg = sidesSlide.find('.side-img');
 
-                            sidesLine.removeClass('show');
-                            sidesArrow.removeClass('show');
-                            // sidesImg.removeClass('show');
+                        sidesLine.removeClass('show');
+                        sidesArrow.removeClass('show');
+                        // sidesImg.removeClass('show');
                     }
 
                 },
@@ -209,9 +210,9 @@ jQuery(document).ready(function($) {
         // fullpageCustomInitialize(maxH);
         $(window).on('load', function () {
             if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
-                var maxH = maxHeight(box);
                 if ($(window).width() > 1024) {
                     setTimeout(function () {
+                        var maxH = maxHeight(box);
                         fullpageCustomInitialize(maxH);
                     }, 300);
                 }
@@ -229,13 +230,13 @@ jQuery(document).ready(function($) {
                     $('body').removeClass('mob-device');
                 }
                 if ($(window).width() > 1024) {
-                    var maxH = maxHeight(box);
                     setTimeout(function () {
+                        var maxH = maxHeight(box);
                         if ($('html').hasClass('fp-enabled')) {
                             $.fn.fullpage.destroy('all');
                         }
                         fullpageCustomInitialize(maxH);
-                    }, 10);
+                    }, 300);
                 } else {
                     if ($('html').hasClass('fp-enabled')) {
                         $.fn.fullpage.destroy('all');
@@ -295,21 +296,21 @@ jQuery(document).ready(function($) {
             fileCount = fileParent.find('.file-count'),
             fileList =fileParent.find('.file-list');
 
-            if (count > 0) {
-                if (!(fileBox.hasClass('open'))) {
-                    fileBox.addClass('open');
-                }
-                fileList.empty();
-                fileCount.text(count);
-
-                for (var i = 0; i < count; ++i) {
-                    fileList.append('<li>'+ $(this).get(0).files[i].name +'<i class="fa fa-times" aria-hidden="true"></i><script>$(".fa-times").on("click", function () { $(this).parents("li").remove(); })</script></li>')
-                }
-            } else {
-                if (fileBox.hasClass('open')) {
-                    fileBox.removeClass('open');
-                }
+        if (count > 0) {
+            if (!(fileBox.hasClass('open'))) {
+                fileBox.addClass('open');
             }
+            fileList.empty();
+            fileCount.text(count);
+
+            for (var i = 0; i < count; ++i) {
+                fileList.append('<li>'+ $(this).get(0).files[i].name +'<i class="fa fa-times" aria-hidden="true"></i><script>$(".fa-times").on("click", function () { $(this).parents("li").remove(); })</script></li>')
+            }
+        } else {
+            if (fileBox.hasClass('open')) {
+                fileBox.removeClass('open');
+            }
+        }
     });
     $('.file-list').on('click', function () {
         var fileParent =  $(this).parents('.custom-form'),
@@ -317,13 +318,13 @@ jQuery(document).ready(function($) {
             fileCount = fileParent.find('.file-count'),
             fileList =fileParent.find('.file-list li'),
             count = fileList.length;
-            if (count > 0) {
-                fileCount.text(count);
-            } else {
-                if (fileBox.hasClass('open')) {
-                    fileBox.removeClass('open');
-                }
+        if (count > 0) {
+            fileCount.text(count);
+        } else {
+            if (fileBox.hasClass('open')) {
+                fileBox.removeClass('open');
             }
+        }
     });
 
 
@@ -332,20 +333,24 @@ jQuery(document).ready(function($) {
         if($('.reviews-slider')) {
             var sliders = $('.reviews-slider'),
                 width = $(window).width();
-
-                sliders.each(function (i) {
-                    var boxWrap = sliders.eq(i).find('.reviews-list'),
-                        box = boxWrap.find('.review-box'),
-                        boxHeight = maxHeight(box);
+                setTimeout(function () {
+                    sliders.each(function (i) {
+                        var boxWrap = sliders.eq(i).find('.reviews-list'),
+                            boxInner = boxWrap.find('.review-box'),
+                            box = boxWrap.find('.review-text'),
+                            boxHeader = boxWrap.find('.review-header-box'),
+                            boxHeight = maxHeight(box) + 86,
+                            boxHeaderHeight = maxHeight(boxHeader);
                         if (boxHeight < 372) {
                             boxHeight = 372;
                         }
-                        // setTimeout(function () {
-                            boxWrap.height(boxHeight);
-                        // }, 200);
-                })
+                        boxInner.outerHeight(boxHeight + boxHeaderHeight);
+                        boxWrap.height(boxHeight + boxHeaderHeight);
+                    })
+                }, 100)
         }
     });
+
     $(window).on('load', function () {
         $('.reviews-nav li').on('click', function () {
             var slider = $(this).parents('.reviews-slider'),
@@ -355,20 +360,20 @@ jQuery(document).ready(function($) {
                 slide = slider.find('[data-review-id="'+ id +'"]');
 
 
-                if(!($(this).hasClass('current-item'))) {
-                    //for nav
-                    navList.removeClass('current-item');
-                    $(this).addClass('current-item');
-                    //for slide
-                    boxList.fadeOut(200);
-                    boxList.removeClass('show');
-                    setTimeout(function () {
-                        slide.fadeIn(350);
-                    },250 );
-                    setTimeout(function () {
-                        slide.addClass('show');
-                    },600 );
-                }
+            if(!($(this).hasClass('current-item'))) {
+                //for nav
+                navList.removeClass('current-item');
+                $(this).addClass('current-item');
+                //for slide
+                boxList.fadeOut(200);
+                boxList.removeClass('show');
+                setTimeout(function () {
+                    slide.fadeIn(350);
+                },250 );
+                setTimeout(function () {
+                    slide.addClass('show');
+                },600 );
+            }
         });
     });
 
@@ -379,19 +384,19 @@ jQuery(document).ready(function($) {
             cellWF = tableW.find('.with-whom-cell.first'),
             cellWM = tableW.find('.with-whom-cell.middle');
 
-            if (widthW > 1024) {
-                if (!(cellWF.hasClass('move'))) {
-                    cellWF.addClass('move');
-                    cellWM.removeClass('move');
-                    cellWF.prependTo(tableW);
-                }
-            } else {
-                if (!(cellWM.hasClass('move'))) {
-                    cellWM.addClass('move');
-                    cellWF.removeClass('move');
-                    cellWM.prependTo(tableW);
-                }
+        if (widthW > 1024) {
+            if (!(cellWF.hasClass('move'))) {
+                cellWF.addClass('move');
+                cellWM.removeClass('move');
+                cellWF.prependTo(tableW);
             }
+        } else {
+            if (!(cellWM.hasClass('move'))) {
+                cellWM.addClass('move');
+                cellWF.removeClass('move');
+                cellWM.prependTo(tableW);
+            }
+        }
     });
 
 
@@ -401,17 +406,17 @@ jQuery(document).ready(function($) {
             openPersonForm = section.find('.with-whom-cell.show'),
             personForm = $(this).parents('.with-whom-cell');
 
-            openPersonForm.removeClass('show');
+        openPersonForm.removeClass('show');
 
-            if ($(this).hasClass('person')) {
-                if(!(personForm.hasClass('show'))) {
-                    personForm.addClass('show');
-                }
-            } else if ($(this).hasClass('close-form')) {
-                if(personForm.hasClass('show')) {
-                    personForm.removeClass('show');
-                }
+        if ($(this).hasClass('person')) {
+            if(!(personForm.hasClass('show'))) {
+                personForm.addClass('show');
             }
+        } else if ($(this).hasClass('close-form')) {
+            if(personForm.hasClass('show')) {
+                personForm.removeClass('show');
+            }
+        }
     });
 
 
@@ -430,7 +435,8 @@ jQuery(document).ready(function($) {
         }, 3000);
     }
     $('.datepicker-here').datepicker({
-        autoClose: true
+        autoClose: true,
+        startDate: new Date()
     });
 
     //for tooltip
@@ -515,22 +521,22 @@ jQuery(document).ready(function($) {
     toolTip();
 
     // initialize validate plugin on the form
-    var forms =  $(".custom-form");
-    forms.each(function () {
-        $(this).validate({
-            errorClass: 'error',
-            errorPlacement: function(error, element) { },
-            rules: {
-                field1: {
-                    required: true
-                },
-                field2: {
-                    required: true,
-                    minlength: 7
-                }
-            }
-        });
-    })
+    // var forms =  $(".custom-form");
+    // forms.each(function () {
+    //     $(this).validate({
+    //         errorClass: 'error',
+    //         errorPlacement: function(error, element) { },
+    //         rules: {
+    //             field1: {
+    //                 required: true
+    //             },
+    //             field2: {
+    //                 required: true,
+    //                 minlength: 7
+    //             }
+    //         }
+    //     });
+    // })
 
     if ($('.nav-list').length) {
         var nav = $('.nav'),
@@ -540,8 +546,8 @@ jQuery(document).ready(function($) {
             prev = $('.penultimate-section'),
             sectionMap = $('.section-map').height();
 
-            boxAnimate.height(lastH)
-            console.log(lastH);
+        boxAnimate.height(lastH)
+        console.log(lastH);
 
         $(window).scroll(function() {
             // for btn up
