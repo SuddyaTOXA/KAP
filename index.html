@@ -1569,7 +1569,8 @@
                                      </li>
                                      <li>
                                          <div class="my-datepicker">
-                                            <input type='text' class="datepicker-here input-style" placeholder="СЕГОДНЯ">
+                                            <input type='text' class="datepicker-here input-style error" placeholder="СЕГОДНЯ">
+                                             <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
                                          </div>
                                      </li>
                                  </ul>
@@ -1577,9 +1578,13 @@
                              <li>
                                  <ul>
                                      <li>
-                                         <input type="tel" class="input-style" placeholder="Ваш номер телефона" required>
-                                         <span class="call-back-desc">Например: 067 000 00 00</span>
-                                         <button class="btn inverse" data-text="жду звонка"><span>жду звонка</span></button>
+                                         <div class="input-wrapper tel">
+                                             <input type="tel" class="input-style" placeholder="Ваш номер телефона" required>
+                                             <span class="error-text" title="введено неккоректное значение" rel="tooltip">!</span>
+                                         </div>
+                                             <span class="call-back-desc">Например: 067 000 00 00</span>
+                                             <button class="btn inverse" data-text="жду звонка"><span>жду звонка</span></button>
+
                                      </li>
                                      <li></li>
                                  </ul>

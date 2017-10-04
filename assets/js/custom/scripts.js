@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
                 verticalCentered: true,
                 scrollingSpeed: 700,
                 scrollBar: true,
-                autoScrolling: false,
+                autoScrolling: true,
                 responsiveHeight: respHeight,
                 responsiveWidth: 1024,
                 onLeave: function(index, nextIndex, direction){
@@ -209,12 +209,19 @@ jQuery(document).ready(function($) {
 
         // fullpageCustomInitialize(maxH);
         $(window).on('load', function () {
+            var sec = $('.section');
+            console.log($(window).height());
+                sec.each(function (i) {
+                    var secH = sec.eq(i).outerHeight(),
+                        innerH = sec.eq(i).children().outerHeight();
+                    console.log(i + 1 +') '+ secH +' === '+ innerH);
+                });
             if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
                 if ($(window).width() > 1024) {
                     setTimeout(function () {
                         var maxH = maxHeight(box);
                         fullpageCustomInitialize(maxH);
-                    }, 300);
+                    }, 100);
                 }
             } else {
                 if (!($('body').hasClass('mob-device'))) {
@@ -236,7 +243,7 @@ jQuery(document).ready(function($) {
                             $.fn.fullpage.destroy('all');
                         }
                         fullpageCustomInitialize(maxH);
-                    }, 300);
+                    }, 10);
                 } else {
                     if ($('html').hasClass('fp-enabled')) {
                         $.fn.fullpage.destroy('all');
@@ -436,9 +443,16 @@ jQuery(document).ready(function($) {
     }
     $('.datepicker-here').datepicker({
         autoClose: true,
-        startDate: new Date()
+        startDate: new Date(),
+        onSelect: function () {
+            var error = $('.my-datepicker').find('.input-style');
+            if (error.hasClass('error')) {
+                error.removeClass('error');
+                console.log('remove');
+            }
+        }
     });
-
+console.log(new Date());
     //for tooltip
     function toolTip () {
         var targets = $( '[rel~=tooltip]' ),

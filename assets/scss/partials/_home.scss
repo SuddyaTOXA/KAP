@@ -827,7 +827,7 @@ body{
           width: 240px;
           font-family: $font-thin;
           font-size: 7.5rem;
-          line-height: $line-height;
+          line-height: 1;
           letter-spacing: $letter-spacing;
           text-align: center;
           color: $color-text3;
@@ -1052,7 +1052,7 @@ body{
       width: ($col * 8.145);
     }
     &.first {
-      padding: 40px 20px 40px 50px;
+      padding: 0 20px 0 50px;
       vertical-align: middle;
     }
   }
@@ -1068,7 +1068,7 @@ body{
   }
 
       .price-box {
-        margin-bottom: 92px;
+        margin-bottom: 48px;
 
       }
       .price-form-wrap {}
@@ -1259,7 +1259,7 @@ body{
       //}
 #tooltip {
   position: absolute;
-  z-index: 100;
+  z-index: 1050;
   padding: 20px 16px 26px;
   text-align: left;
   font-size: 16px;

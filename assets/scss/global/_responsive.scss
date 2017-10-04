@@ -748,6 +748,22 @@
     max-width: 100%;
     height: auto;
   }
+  .call-back-box {
+    a.btn,
+    .btn {
+      min-width: 235px;
+      font-size: 15px;
+      border-width: 5px;
+      span {
+        padding: 13px 20px 13px;
+      }
+      &:before {
+        height: -webkit-calc(100% - 26px);
+        height: calc(100% - 26px);
+        padding: 13px 20px 13px;
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) and (max-height: 480px) {
@@ -939,6 +955,9 @@
       width: 100%;
       margin-top: 8px;
     }
+  }
+  .input-wrapper.tel {
+    max-width: 100%;
   }
   .section-necessary,
   .trusting {

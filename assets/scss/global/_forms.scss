@@ -10,6 +10,12 @@
   background-color: transparent;
   border: 1px solid rgba(245, 245, 245, .25);
   @include transition($transition-other);
+  @include border-radius(0);
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   &:focus {
     border-color: $white;
   }
@@ -388,8 +394,10 @@ select {
     @include bg();
     pointer-events: none;
   }
+  .error-text {
+    top: 18px;
+  }
 }
-
 .input-wrapper {
   position: relative;
   input {
@@ -398,6 +406,13 @@ select {
     }
     &:valid + .placeholder {
       display: none;
+    }
+  }
+  &.tel {
+    max-width: -webkit-calc(100% - 233px);
+    max-width: calc(100% - 233px);
+    .error-text {
+      top: 17px;
     }
   }
   .placeholder {
